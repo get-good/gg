@@ -1,0 +1,84 @@
+<template name="User_Profile_Page">
+  <div class="ui left aligned grid text container">
+
+    <div class="four wide column">
+      <img class="ui small circular image" src="/images/profilepic.jpg"/>
+      <div class="ui segments">
+        <div class="ui segment">
+          <p class="item">About</p>
+        </div>
+        <div class="ui segment">
+          <p class="item">Rating</p>
+        </div>
+        <div class="ui segment">
+          <p class="item">Edit</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="twelve wide column">
+      <h1>Hiya!</h1>
+      <p>This is your profile! Here you may edit the courses you have taken and for which you are willing to provide
+        help for! You may also select which classes you are currently taking and for which you may need help!</p>
+      <h1>Sensei (Provide Help)</h1>
+
+      {{#if Template.subscriptionsReady}}
+        <table style="margin-top: 20px" class="ui celled table">
+          <thead>
+          <tr>
+            <th>Class</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td>ICS 311</td>
+          </tr>
+          {{#each contact in ContactsList}}
+            <tr>
+              <td>{{sensei.class}}</td>
+              <td><a href="{{pathFor 'Edit_Sensei' _id=contact._id}}">Edit</a></td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        {{> Loading}}
+      {{/if}}
+
+      <div class="ui button">Add</div>
+
+      <h1>Grasshopper (Receive Help)</h1>
+
+      {{#if Template.subscriptionsReady}}
+        <table style="margin-top: 20px" class="ui celled table">
+          <thead>
+          <tr>
+            <th>Class</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr>
+            <td>
+              ICS 111
+            </td>
+          </tr>
+          {{#each contact in ContactsList}}
+            <tr>
+              <td>{{grasshopper.class}}</td>
+              <td><a href="{{pathFor 'Edit_Grasshopper' _id=contact._id}}">Edit</a></td>
+            </tr>
+          {{/each}}
+          </tbody>
+        </table>
+      {{else}}
+        {{> Loading}}
+      {{/if}}
+
+      <div class="ui button">Add</div>
+
+    </div>
+
+  </div>
+</template>
