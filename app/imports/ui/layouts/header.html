@@ -4,8 +4,11 @@
     {{#if currentUser}}
       <a class="item"><h1>ICS Study Buddy</h1></a>
       <a class="item" href="{{pathFor 'User_Home_Page'}}">Home</a>
+      <a class="item" href="{{pathFor 'Admin_Home_Page'}}">Admin Home</a>
       <a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a>
+      <a class="item" href="{{pathFor 'Sessions_Page'}}">Sessions</a>
       <a class="item" href="{{pathFor 'events'}}">Calendar</a>
+      <a class="item" href="{{pathFor 'Rankings_Page'}}">Rankings</a>
       <a class="right item"><p>Welcome back, {{ user }}</p></a>
       {{> Cas_Login }}
     {{else}}

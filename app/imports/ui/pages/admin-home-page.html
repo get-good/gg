@@ -1,0 +1,101 @@
+<template name="Admin_Home_Page">
+  <div class="ui container">
+    {{> Admin_Sessions_Page}}
+    <br>
+    {{> Admin_Rankings_Page}}
+    <br>
+    <button class="ui button" type="submit">Logout (Admin)</button>
+  </div>
+</template>
+<template name="Admin_Sessions_Page">
+  <div class="ui container">
+    <h2 class="ui dividing header">Sessions (Admin)</h2>
+    <table style="margin-top: 20px;" class="ui celled table ">
+      <thead>
+      <tr>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Topic</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Right Now!</td>
+        <td>Right Now!</td>
+        <td>Meteor</td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+      <tr>
+        <td>10/29/16</td>
+        <td>12 PM</td>
+        <td>Meteor</td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+      <tr>
+        <td>10/30/16</td>
+        <td>12 PM</td>
+        <td>HTML</td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+      <tr>
+        <td>10/31/16</td>
+        <td>12 PM</td>
+        <td>CSS</td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<template name="Admin_Rankings_Page">
+  <div class="ui container">
+    <h2 class="ui dividing header">Rankings (Admin)</h2>
+    <table style="margin-top: 20px;" class="ui celled table ">
+      <thead>
+      <tr>
+        <th>Username</th>
+        <th>Score</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><a href="#">John Doe</a></td>
+        <td>100</td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+      </tr>
+      <tr>
+        <td><a href="#">Jane Doe</a></td>
+        <td>10</td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+
+      </tr>
+      <tr>
+        <td><a href="#">John Roe</a></td>
+        <td>1</td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+
+      </tr>
+      <tr>
+        <td><a href="#">Jane Roe</a></td>
+        <td>0</td>
+        <td><a href="#">Edit</a></td>
+        <td><a href="#">Delete</a></td>
+
+      </tr>
+      </tbody>
+    </table>
+    <button class="ui button" type="submit">Reset Scores</button>
+  </div>
+</template>

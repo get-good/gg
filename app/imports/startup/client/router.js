@@ -8,6 +8,13 @@ FlowRouter.route('/', {
   },
 });
 
+FlowRouter.route('/admin', {
+  name: 'Admin_Home_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Admin_Home_Page' });
+  },
+});
+
 FlowRouter.route('/home', {
   name: 'User_Home_Page',
   action() {
@@ -33,6 +40,20 @@ FlowRouter.route('/calendar', {
   name: 'events',
   action() {
     BlazeLayout.render('App_Body', { main: 'events' });
+  },
+});
+
+FlowRouter.route('/rankings', {
+  name: 'Rankings_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Rankings_Page' });
+  },
+});
+
+FlowRouter.route('/sessions', {
+  name: 'Sessions_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Sessions_Page' });
   },
 });
 
