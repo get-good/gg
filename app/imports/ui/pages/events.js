@@ -36,6 +36,9 @@ Template.events.onRendered( () => {
         success: true, // whether the button should be green or red
         focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
       }, function (ok) {
+        if (!ok) return;
+        console.log('ok');
+        Meteor.call('delete', this._id);
         Events.remove(event._id);
       });
     },
