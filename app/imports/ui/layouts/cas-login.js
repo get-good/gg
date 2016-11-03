@@ -26,9 +26,9 @@ Template.Cas_Login.events({
         console.log(error);
       }
     };
-    Meteor.loginWithCas(callback);
+
     new Confirmation({
-      message: "Please agree to the following before proceeding to the next page:" +
+      message: "Please agree to the following before proceeding to the next page: " +
       "This application has been developed by students at the University of Hawaii. It is provided on a pilot basis and there are no guarantees regarding future access to this system. All users are expected to adhere to the principles specified in the University of Hawaii Systemwide Student Conduct Code.  The developers reserve the right to ban access to this system by any students who violate this code of conduct or otherwise display inappropriate behavior on the site.",
       title: "Terms of Use",
       cancelText: "Cancel",
@@ -36,6 +36,10 @@ Template.Cas_Login.events({
       success: true, // whether the button should be green or red
       focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
+      if (!ok) return;
+      console.log('ok');
+      Meteor.call('delete', this._id);
+      Meteor.loginWithCas(callback);
       FlowRouter.go('User_Home_Page');
     });
     return false;
