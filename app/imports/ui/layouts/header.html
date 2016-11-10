@@ -2,7 +2,7 @@
     <div class="ui top fixed borderless inverted menu">
   <div class="ui container">
     {{#if currentUser}}
-      <a class="item"><h1>ICS Study Buddy</h1></a>
+      <a class="item"><h1>Get Good</h1></a>
       <a class="item" href="{{pathFor 'User_Home_Page'}}">Home</a>
       <a class="item" href="{{pathFor 'Admin_Home_Page'}}">Admin Home</a>
       <a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a>
@@ -12,7 +12,7 @@
       <a class="right item"><p>Welcome back, {{ user }}</p></a>
       {{> Cas_Login }}
     {{else}}
-      <a class="item" href="{{pathFor 'Public_Landing_Page'}}"><h1>ICS Study Buddy</h1></a>
+      <a class="item" href="{{pathFor 'Public_Landing_Page'}}"><h1>Get Good</h1></a>
       <a class="right item"></a>
       {{> Cas_Login }}
     {{/if}}

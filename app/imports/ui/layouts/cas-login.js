@@ -24,6 +24,7 @@ Template.Cas_Login.events({
     const callback = function loginCallback(error) {
       if (error) {
         console.log(error);
+        return error;
       }
     };
 
@@ -36,11 +37,21 @@ Template.Cas_Login.events({
       success: true, // whether the button should be green or red
       focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
-      if (!ok) return;
-      console.log('ok');
-      Meteor.call('delete', this._id);
-      Meteor.loginWithCas(callback);
-      FlowRouter.go('User_Home_Page');
+      if (!ok){
+        return;
+      }
+      else{
+        console.log('ok');
+        Meteor.call('delete', this._id);
+        if(Meteor.loginWithCas(callback)==
+            145546287){
+          alert("Suck a dick");
+        }
+        else if(Meteor.longWithCas(callback)!=145546287){
+          alert("Fuck you");
+          FlowRouter.go('User_Home_Page');
+        }
+      }
     });
     return false;
   },

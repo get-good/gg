@@ -64,6 +64,13 @@ FlowRouter.route('/Add_Session', {
   },
 });
 
+FlowRouter.route('/about', {
+  name: 'About',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'About' });
+  },
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_Body', { main: 'App_Not_Found' });

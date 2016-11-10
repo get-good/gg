@@ -24,3 +24,5 @@ import './sessions-page.js';
 
 import './add-session.html';
 import './add-session.js';
+
+import './about.html';
