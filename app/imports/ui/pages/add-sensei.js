@@ -1,4 +1,4 @@
-Template.User_Profile_Page.events({
+Template.Add_Sensei.events({
   'click .about'(event) {
     event.preventDefault();
     FlowRouter.go('About');

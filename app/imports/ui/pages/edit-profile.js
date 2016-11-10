@@ -1,4 +1,4 @@
-Template.User_Profile_Page.events({
+Template.Edit_Profile.events({
   'click .about'(event) {
     event.preventDefault();
     FlowRouter.go('About');
