@@ -17,7 +17,7 @@ import './events.html';
 import './events.js';
 
 import './rankings-page.html';
-import './rankings-pages.js';
+import './rankings-page.js';
 
 import './sessions-page.html';
 import './sessions-page.js';
