@@ -26,6 +26,7 @@ Template.Cas_Login.events({
       if (error) {
         FlowRouter.go('Public_Landing_Page');
         console.log(error);
+        return error;
       }
     };
 

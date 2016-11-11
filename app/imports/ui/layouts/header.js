@@ -12,3 +12,11 @@ Template.Header.helpers({
   },
 });
 
+Template.Header.events({
+  'click .item': function () {
+    $('.ui .item').on('click', function() {
+      $('.ui .item').removeClass('active');
+      $(this).addClass('active');
+    });
+  },
+});

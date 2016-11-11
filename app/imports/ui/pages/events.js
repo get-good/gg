@@ -51,3 +51,10 @@ Template.events.onRendered( () => {
   });
 
 });
+
+Template.events.events({
+  'click .about'(event) {
+    event.preventDefault();
+    FlowRouter.go('About');
+  },
+});

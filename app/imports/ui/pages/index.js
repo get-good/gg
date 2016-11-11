@@ -24,3 +24,18 @@ import './sessions-page.js';
 
 import './add-session.html';
 import './add-session.js';
+
+import './about.html';
+import './about.js';
+
+import './add-sensei.html';
+import './add-sensei.js';
+
+import './add-grasshopper.html';
+import './add-grasshopper.js';
+
+import './rating.html';
+import './rating.js';
+
+import './edit-profile.html';
+import './edit-profile.js';

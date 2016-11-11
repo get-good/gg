@@ -64,6 +64,41 @@ FlowRouter.route('/Add_Session', {
   },
 });
 
+FlowRouter.route('/about', {
+  name: 'About',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'About' });
+  },
+});
+
+FlowRouter.route('/add-grasshopper', {
+  name: 'Add_Grasshopper',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Add_Grasshopper' });
+  },
+});
+
+FlowRouter.route('/add-sensei', {
+  name: 'Add_Sensei',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Add_Sensei' });
+  },
+});
+
+FlowRouter.route('/user-rating', {
+  name: 'rating',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'rating' });
+  },
+});
+
+FlowRouter.route('/edit-profile', {
+  name: 'Edit_Profile',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Edit_Profile' });
+  },
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_Body', { main: 'App_Not_Found' });

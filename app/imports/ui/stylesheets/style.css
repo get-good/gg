@@ -1,3 +1,8 @@
 body {
   padding-top: 75px;  /* Move body of page below navbar. */
 }
+
+.ui.button{
+  border-color: black;
+  background-color: white;
+}
