@@ -22,7 +22,9 @@ Template.Cas_Login.events({
   'click .cas-login': function casLogin(event, instance) {
     event.preventDefault();
     const callback = function loginCallback(error) {
+      FlowRouter.go('User_Home_Page');
       if (error) {
+        FlowRouter.go('Public_Landing_Page');
         console.log(error);
       }
     };
@@ -32,7 +34,7 @@ Template.Cas_Login.events({
       "This application has been developed by students at the University of Hawaii. It is provided on a pilot basis and there are no guarantees regarding future access to this system. All users are expected to adhere to the principles specified in the University of Hawaii Systemwide Student Conduct Code.  The developers reserve the right to ban access to this system by any students who violate this code of conduct or otherwise display inappropriate behavior on the site.",
       title: "Terms of Use",
       cancelText: "Cancel",
-      okText: "Ok",
+      okText: "Agree",
       success: true, // whether the button should be green or red
       focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
@@ -40,7 +42,8 @@ Template.Cas_Login.events({
       console.log('ok');
       Meteor.call('delete', this._id);
       Meteor.loginWithCas(callback);
-      FlowRouter.go('User_Home_Page');
+      //FlowRouter.go('User_Home_Page');
+      //FlowRouter.go('Public_Landing_Page');
     });
     return false;
   },

@@ -1,5 +1,10 @@
 
 {
+  "galaxy.meteor.com": {
+    "env": {
+      "MONGO_URL": "mongodb://jchock:AnhieDam<3@ds147377.mlab.com:47377/get-good"
+    }
+  },
   "cas": {
     "baseUrl": "https://cas-test.its.hawaii.edu/cas/",
     "autoClose": true
@@ -16,7 +21,6 @@
     "johnson",
     "cmoore",
     "akuloloi",
-    "jchock25",
     "dppavao"
   ]
 }
