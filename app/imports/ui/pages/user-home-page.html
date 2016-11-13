@@ -1,5 +1,6 @@
 <template name="User_Home_Page">
-  <div class="ui left aligned centered grid text container">
+  {{#if currentUser}}
+    <div class="ui left aligned centered grid text container">
 
     <div class="four wide column">
       <img class="ui small circular image" src="/images/profilepic.jpg"/>
@@ -23,7 +24,10 @@
       <p>When you're ready to explore, feel free to click any of the links up top!</p>
 
     </div>
-
-
-  </div>
+    </div>
+  {{else}}
+    <div class="ui container">
+      <h2 class="ui centered header">Please log in to access this page.</h2>
+    </div>
+  {{/if}}
 </template>

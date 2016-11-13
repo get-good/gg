@@ -39,7 +39,10 @@ Template.Cas_Login.events({
       success: true, // whether the button should be green or red
       focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
-      if (!ok) return;
+      if (!ok) {
+        FlowRouter.go('Public_Landing_Page');
+        return;
+      }
       console.log('ok');
       Meteor.call('delete', this._id);
       Meteor.loginWithCas(callback);
