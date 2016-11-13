@@ -12,13 +12,21 @@ Template.events.onRendered( () => {
   $( '#events-calendar' ).fullCalendar({
     events( start, end, timezone, callback ) {
       let data = Events.find().fetch().map( ( event ) => {
-        event.editable = !isPast( event.start );
+        event.editable = true;
         return event;
       });
 
       if ( data ) {
         callback( data );
       }
+    },
+
+    eventRender( event, element ) {
+      element.find( '.fc-content' ).html(
+          `<h4>${ event.title }</h4>
+         <p>${ event.stime } - ${event.etime}</p>
+        `
+      );
     },
 
     dayClick( date ) {

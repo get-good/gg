@@ -45,6 +45,8 @@ Template.Add_Session.events({
           title: template.find( '[name="title"]' ).value,
           start: template.find( '[name="start"]' ).value,
           end: template.find( '[name="end"]' ).value,
+          stime: template.find( '[name="stime"]' ).value,
+          etime: template.find( '[name="etime"]' ).value,
         };
 
     Events.insert(eventItem);

@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "bcrypt": "^0.8.7",
-    "meteor-node-stubs": "~0.2.0"
+    "meteor-node-stubs": "~0.2.0",
+    "react-big-calendar": "^0.11.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.1",
@@ -22,7 +23,11 @@
   },
   "postcss": {
     "plugins": {
-      "autoprefixer": {"browsers": ["last 2 versions"]}
+      "autoprefixer": {
+        "browsers": [
+          "last 2 versions"
+        ]
+      }
     }
   }
 }
