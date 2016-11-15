@@ -1,8 +1,9 @@
 <template name="Header">
-    <div class="ui top fixed borderless inverted menu">
+  <img style="max-height: 220px;" class="ui fluid image" src="/images/getgud.jpg">
+  <div style="margin-top: 0; border-radius: 0;" class="ui top borderless inverted menu">
   <div class="ui container">
     {{#if currentUser}}
-      <a class="item"><h1>Get Good</h1></a>
+      <a class="item" src="" ><h1>Get Good</h1></a>
       <a class="item" href="{{pathFor 'User_Home_Page'}}">Home</a>
       <a class="item" href="{{pathFor 'Admin_Home_Page'}}">Admin Home</a>
       <a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a>
