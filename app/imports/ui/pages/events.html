@@ -1,28 +1,6 @@
 <template name="events">
-  <!--<div class="ui left aligned grid text container">-->
-
-  <!--<div class="four wide column">-->
-  <!--<img class="ui small circular image" src="/images/profilepic.jpg"/>-->
-  <!--<div class="ui segments">-->
-  <!--<div class="ui button about">-->
-  <!--<p class="item">About</p>-->
-  <!--</div>-->
-  <!--<div class="ui button rating">-->
-  <!--<p class="item">Rating</p>-->
-  <!--</div>-->
-  <!--<div class="ui button edit">-->
-  <!--<p class="item">Edit</p>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
-
-  <!--<div class="twelve wide column">-->
   <div class="ui container">
-    <h2>Make a Session</h2>
-    <p>Here you can add and remove any sessions you wish to create with other ICS students. To begin, please click
-      on a date.</p>
-    <div id="events-calendar" style="padding-top: 10px"></div>
+    {{> Add_Session }}
+    <div id="events-calendar"></div>
   </div>
-  <!--</div>-->
-  <!--</div>-->
 </template>

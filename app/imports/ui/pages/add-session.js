@@ -15,8 +15,8 @@ Template.Add_Session.helpers({
 
     if ( eventModal ) {
       return {
-        button: eventModal.type === 'Add',
-        label: eventModal.type === 'Add an'
+        button: eventModal.type === 'edit' ? 'Edit' : 'Add',
+        label: eventModal.type === 'edit' ? 'Edit' : 'Add an'
       };
     }
   },
@@ -24,7 +24,7 @@ Template.Add_Session.helpers({
     return v1 === v2;
   },
   event() {
-    let eventModal = 'Add';
+    let eventModal = Session.get( 'eventModal' );
 
     if ( eventModal ) {
       return eventModal.type === 'edit' ? Events.findOne( eventModal.event ) : {
@@ -45,18 +45,37 @@ Template.Add_Session.events({
           title: template.find( '[name="title"]' ).value,
           start: template.find( '[name="start"]' ).value,
           end: template.find( '[name="end"]' ).value,
-          stime: template.find( '[name="stime"]' ).value,
-          etime: template.find( '[name="etime"]' ).value,
+          allDay: false,
         };
 
-    Events.insert(eventItem);
-    FlowRouter.go("events");
-  }
-});
+        console.log(eventItem);
 
-Template.Add_Session.events({
-  'click .btn-default' (event){
-    event.preventDefault();
-    FlowRouter.go('events');
-  }
+    if ( submitType === 'editEvent' ) {
+      eventItem._id   = eventModal.event;
+    }
+
+    Meteor.call( submitType, eventItem, ( error ) => {
+      if ( error ) {
+        Bert.alert( error.reason, 'danger' );
+      } else {
+        Bert.alert( `Event ${ eventModal.type }ed!`, 'success' );
+        closeModal();
+      }
+    });
+  },
+
+  'click .delete-event' ( event, template ) {
+    let eventModal = Session.get( 'eventModal' );
+    if ( confirm( 'Are you sure? This is permanent.' ) ) {
+      Meteor.call( 'removeEvent', eventModal.event, ( error ) => {
+        if ( error ) {
+          Bert.alert( error.reason, 'danger' );
+        } else {
+          Bert.alert( 'Event deleted!', 'success' );
+          closeModal();
+        }
+      });
+    }
+  },
+
 });

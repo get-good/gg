@@ -1,11 +1,10 @@
 Meteor.methods({
   addEvent( event ) {
     check( event, {
-      title: String,
+      title: Match.Optional( String ),
       start: String,
       end: String,
-      type: String,
-      guests: Number
+      allDay: Boolean,
     });
 
     try {
