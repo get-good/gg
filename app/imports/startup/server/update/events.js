@@ -5,7 +5,7 @@ Meteor.methods({
       title: Match.Optional( String ),
       start: String,
       end: String,
-      allDay: Mathc.Optional( Boolean ),
+      allDay: Match.Optional( Boolean ),
     });
 
     try {
