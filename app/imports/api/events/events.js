@@ -13,13 +13,9 @@ let EventsSchema = new SimpleSchema({
     type: String,
     label: 'When this event will end.'
   },
-  'stime': {
-    type: String,
-    label: 'What time this event will start.'
-  },
-  'etime': {
-    type: String,
-    label: 'What time this event will end.'
+  'allDay': {
+    type: Boolean,
+    label: 'Not all day'
   },
 });
 

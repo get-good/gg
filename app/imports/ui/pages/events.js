@@ -1,68 +1,71 @@
-let isPast = ( date ) => {
+let isPast = (date) => {
   let today = moment().format();
-  return moment( today ).isAfter( date );
+  return moment(today).isAfter(date);
 };
 
-Template.events.onCreated( () => {
+Template.events.onCreated(() => {
   let template = Template.instance();
-  template.subscribe( 'events' );
+  template.subscribe('events');
 });
 
-Template.events.onRendered( () => {
-  $( '#events-calendar' ).fullCalendar({
-    events( start, end, timezone, callback ) {
-      let data = Events.find().fetch().map( ( event ) => {
-        event.editable = true;
+Template.events.onRendered(() => {
+  $('#events-calendar').fullCalendar({
+    events(start, end, timezone, callback, allDay) {
+      let data = Events.find().fetch().map((event) => {
+        event.editable = !isPast(event.start);
         return event;
       });
 
-      if ( data ) {
-        callback( data );
+      if (data) {
+        callback(data);
       }
     },
 
-    eventRender( event, element ) {
-      element.find( '.fc-content' ).html(
-          `<h4>${ event.title }</h4>
-         <p>${ event.stime } - ${event.etime}</p>
-        `
-      );
+    header: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'agendaDay,month,listWeek'
     },
 
-    dayClick( date ) {
-      FlowRouter.go('Add_Session');
-      Session.set( 'eventModal', { type: 'add', date: date.format() } );
+    allDaySlot: false,
+    displayEventTime: {
+      agendaDay: true,
+      month: true,
+      "default": true
     },
 
-    eventClick( event ) {
-      Session.set( 'eventModal', { type: 'edit', event: event._id } );
-      new Confirmation({
-        message: "Are you sure you want to delete this event?",
-        title: "Confirmation",
-        cancelText: "Cancel",
-        okText: "Ok",
-        success: true, // whether the button should be green or red
-        focus: "cancel" // which button to autofocus, "cancel" (default) or "ok", or "none"
-      }, function (ok) {
-        if (!ok) return;
-        console.log('ok');
-        Meteor.call('delete', this._id);
-        Events.remove(event._id);
+    eventDrop(event, delta, revert) {
+      let date = event.start.format();
+      let update = {
+        _id: event._id,
+        start: date,
+        end: date,
+      };
+
+      Meteor.call('editEvent', update, (error) => {
+
       });
     },
 
+    dayClick(date, start, end, jsEvent, view) {
+
+      $('#events-calendar').fullCalendar('changeView', 'agendaDay');
+      $('#events-calendar').fullCalendar('gotoDate', date)
+
+      Session.set('eventModal', { type: 'add', date: date.format() });
+      $('#add-edit-event-modal').modal('show');
+    },
+
+    eventClick(event) {
+      Session.set('eventModal', { type: 'edit', event: event._id });
+      $('#add-edit-event-modal').modal('show');
+    },
+
   });
 
-  Tracker.autorun( () => {
+  Tracker.autorun(() => {
     Events.find().fetch();
-    $( '#events-calendar' ).fullCalendar( 'refetchEvents' );
+    $('#events-calendar').fullCalendar('refetchEvents');
   });
-
 });
 
-Template.events.events({
-  'click .about'(event) {
-    event.preventDefault();
-    FlowRouter.go('About');
-  },
-});
