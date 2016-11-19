@@ -46,6 +46,7 @@ Template.Add_Session.events({
           start: template.find( '[name="start"]' ).value,
           end: template.find( '[name="end"]' ).value,
           allDay: false,
+          type: template.find( '[name="type"]' ).value,
         };
 
         console.log(eventItem);

@@ -21,25 +21,63 @@ Template.events.onRendered(() => {
       }
     },
 
+    eventRender: function(event, element){
+      if (event.type == 'Grasshopper')
+      {
+        element.css('background-color', '#61b2a7')
+      }
+      else
+      {
+        element.css('background-color', '#999900')
+        element.css('color', 'black')
+      }
+    },
+
+    eventDurationEditable: true,
+
     header: {
       left: 'prev,next today',
       center: 'title',
       right: 'agendaDay,month,listWeek'
     },
 
-    allDaySlot: false,
+    // allDaySlot: false,
+
     displayEventTime: {
       agendaDay: true,
       month: true,
-      "default": true
+      list: true,
     },
 
+    displayEventEnd: true,
+
     eventDrop(event, delta, revert) {
-      let date = event.start.format();
+      let start = event.start.format();
+      let end = event.end;
+      if(end != null) {
+        end = event.end.format();
+      }
+      else {
+        end = event.start.format();
+      }
       let update = {
         _id: event._id,
-        start: date,
-        end: date,
+        start: start,
+        end: end,
+      };
+
+      Meteor.call('editEvent', update, (error) => {
+
+      });
+    },
+
+    eventResize(event, delta, revert) {
+      let start = event.start.format();
+      let end = event.end.format();
+      let update = {
+        _id: event._id,
+        start: start,
+        end: end,
       };
 
       Meteor.call('editEvent', update, (error) => {

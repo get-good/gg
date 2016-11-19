@@ -17,6 +17,10 @@ let EventsSchema = new SimpleSchema({
     type: Boolean,
     label: 'Not all day'
   },
+  'type': {
+    type: String,
+    label: 'Check if student is grasshopper or sensei'
+  }
 });
 
 Events.attachSchema( EventsSchema );

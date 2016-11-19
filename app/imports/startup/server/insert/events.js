@@ -5,6 +5,7 @@ Meteor.methods({
       start: String,
       end: String,
       allDay: Boolean,
+      type: String,
     });
 
     try {

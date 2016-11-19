@@ -3,9 +3,10 @@ Meteor.methods({
     check( event, {
       _id: String,
       title: Match.Optional( String ),
-      start: String,
-      end: String,
+      start: Match.Optional( String ),
+      end: Match.Optional( String ),
       allDay: Match.Optional( Boolean ),
+      type: Match.Optional( String ),
     });
 
     try {

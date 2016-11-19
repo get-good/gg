@@ -21,6 +21,12 @@
             <input disabled type="text" name="end" class="form-control"
                    value="{{#if event.end}}{{event.end}}{{else}}{{event.start}}{{/if}}">
 
+            <label for="type">Classification</label>
+            <select name="type" class="form-control">
+              <option selected="{{selected event.type 'Grasshopper' }}" value="Grasshopper">Grasshopper</option>
+              <option selected="{{selected event.type 'Sensei' }}" value="Sensei">Sensei</option>
+            </select>
+
 
           </div>
           <div class="modal-footer">
