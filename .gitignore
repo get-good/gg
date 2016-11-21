@@ -7,3 +7,4 @@ node_modules
 
 settings.production.json
 settings.json
+app/npm-debug.log

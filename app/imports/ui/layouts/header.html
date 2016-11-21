@@ -3,14 +3,13 @@
   <div style="margin-top: 0; border-radius: 0;" class="ui top borderless inverted menu">
   <div class="ui container">
     {{#if currentUser}}
-      <a class="item" src="" ><h1>Get Good</h1></a>
+      <div class="item"><h1>Get Good</h1></div>
       <a class="item" href="{{pathFor 'User_Home_Page'}}">Home</a>
       <a class="item" href="{{pathFor 'Admin_Home_Page'}}">Admin Home</a>
       <a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a>
-      <a class="item" href="{{pathFor 'Sessions_Page'}}">Sessions</a>
       <a class="item" href="{{pathFor 'events'}}">Calendar</a>
       <a class="item" href="{{pathFor 'Rankings_Page'}}">Rankings</a>
-      <a class="right item"><p>Welcome back, {{ user }}</p></a>
+      <div class="right item"><p>Welcome back, {{ user }}</p></div>
       {{> Cas_Login }}
     {{else}}
       <a class="item" href="{{pathFor 'Public_Landing_Page'}}"><h1>Get Good</h1></a>

@@ -107,3 +107,6 @@ Template.events.onRendered(() => {
   });
 });
 
+$('#events-calendar').fullCalendar({
+  schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'
+});
