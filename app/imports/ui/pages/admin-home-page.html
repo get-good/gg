@@ -1,4 +1,5 @@
 <template name="Admin_Home_Page">
+  {{#if currentUser}}
   <div class="ui container">
     {{> Admin_Sessions_Page}}
     <br>
@@ -6,6 +7,11 @@
     <br>
     <button class="ui button" type="submit">Logout (Admin)</button>
   </div>
+  {{else}}
+    <div class="ui container">
+      <h2 class="ui centered header">Please log in to access this page.</h2>
+    </div>
+  {{/if}}
 </template>
 <template name="Admin_Sessions_Page">
   <div class="ui container">

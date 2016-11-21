@@ -1,8 +1,14 @@
 <template name="events">
+  {{#if currentUser}}
   <div class="ui container">
     <h4>Create a Session</h4>
     <p>Here you can add, edit and remove a session from your current calendar!  To begin, please select a date.</p>
     {{> Add_Session }}
     <div id="events-calendar"></div>
   </div>
+  {{else}}
+    <div class="ui container">
+      <h2 class="ui centered header">Please log in to access this page.</h2>
+    </div>
+  {{/if}}
 </template>
