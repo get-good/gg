@@ -1,6 +1,12 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
 
+Template.Cas_Login.helpers({
+  user: function user() {
+    return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
+  },
+})
+
 Template.Cas_Login.events({
   /**
    * Handle the click on the logout link.

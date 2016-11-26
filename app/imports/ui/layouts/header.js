@@ -11,12 +11,3 @@ Template.Header.helpers({
     return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
   },
 });
-
-Template.Header.events({
-  'click .item': function () {
-    $('.ui .item').on('click', function() {
-      $('.ui .item').removeClass('active');
-      $(this).addClass('active');
-    });
-  },
-});

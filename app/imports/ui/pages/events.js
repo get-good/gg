@@ -23,22 +23,6 @@ Template.events.onRendered(() => {
       events(start, end, timezone, callback, allDay) {
         let data = Events.find().fetch().map((event) => {
 
-          let isSame = (date) => {
-            let today = moment().format();
-            return moment(today).isSame(date, 'day');
-          };
-
-          //find count of collections in Events
-          // var value = Events.find().count();
-          //
-          if (isSame(event.start) == true) {
-            Bert.alert(event.title + ' will occur today!')
-          }
-
-          // for(i = 0; i < list.length; i++){
-          //   alert(list[i] + ' will occur today!');
-          // };
-
           event.editable = !isPast(event.start);
           return event;
         });
@@ -138,13 +122,3 @@ Template.events.onRendered(() => {
 $('#events-calendar').fullCalendar({
   schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'
 });
-
-Bert.defaults = {
-  hideDelay: 5000,
-  // Accepts: a number in milliseconds.
-  style: 'fixed-top',
-  // Accepts: fixed-top, fixed-bottom, growl-top-left,   growl-top-right,
-  // growl-bottom-left, growl-bottom-right.
-  type: 'default'
-  // Accepts: default, success, info, warning, danger.
-};

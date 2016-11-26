@@ -1,6 +1,6 @@
 <template name="Header">
-  <img style="max-height: 220px;" class="ui fluid image" src="/images/getgud.jpg">
-  <div style="margin-top: 0; border-radius: 0;" class="ui top borderless inverted menu">
+  <!--<img style="max-height: 220px;" class="ui fluid image" src="/images/getgud.jpg">-->
+  <div style="margin-top: 0; border-radius: 0;" class="ui top borderless fixed inverted menu">
   <div class="ui container">
     {{#if currentUser}}
       <div class="item"><h1>Get Good</h1></div>
@@ -9,8 +9,8 @@
       <a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a>
       <a class="item" href="{{pathFor 'events'}}">Calendar</a>
       <a class="item" href="{{pathFor 'Rankings_Page'}}">Rankings</a>
-      <div class="right item"><p>Welcome, {{ user }}</p></div>
-      {{> Cas_Login }}
+      <div class="right item"><p>{{> Cas_Login }}</p></div>
+      <a>{{> Notify}}</a>
     {{else}}
       <a class="item" href="{{pathFor 'Public_Landing_Page'}}"><h1>Get Good</h1></a>
       <a class="right item"><p>{{> Cas_Login }}</p></a>
