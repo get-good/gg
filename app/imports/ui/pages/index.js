@@ -39,3 +39,6 @@ import './rating.js';
 
 import './edit-profile.html';
 import './edit-profile.js';
+
+import './help-page.js';
+import './help-page.html';
