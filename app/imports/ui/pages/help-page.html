@@ -1,0 +1,22 @@
+<template name="Help_Page">
+  {{#if currentUser}}
+    <div class="ui container">
+      <h1 class="ui dividing header">Help</h1>
+      <h4 class="ui header">Here you can see what each page is for and how to use them, in case you forgot.</h4>
+      <a href="#"><h2 class="ui dividing header">Home</h2></a>
+      <h5 class="ui header">This is your home page! From here, you can edit your profile,
+        read your about page and even check your current helper rating.</h5>
+      <h2 class="ui dividing header">Profile</h2>
+      <h5 class="ui header">This is your profile! Here you may edit the courses you have taken and for which you are willing to provide
+        help for! You may also select which classes you are currently taking and for which you may need help!</h5>
+      <h2 class="ui dividing header">Calendar</h2>
+      <h5 class="ui header">Here you can add, edit and remove a session from your current calendar! To begin, please select a date in the day view. By clicking on a time slot, you can set up an event and drag the bottom of the box to extend the time of your event. Click on an event to edit or delete it.</h5>
+      <h2 class="ui dividing header">Rankings</h2>
+      <h5 class="ui header">Here you can view the rankings of all the senseis. Strive to be the top sensei! Rankings are based on ratings received by grasshoppers when they receive help.</h5>
+    </div>
+  {{else}}
+    <div class="ui container">
+      <h2 class="ui centered header">Please log in to access this page.</h2>
+    </div>
+  {{/if}}
+</template>

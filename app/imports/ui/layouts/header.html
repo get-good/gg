@@ -9,7 +9,8 @@
       <a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a>
       <a class="item" href="{{pathFor 'events'}}">Calendar</a>
       <a class="item" href="{{pathFor 'Rankings_Page'}}">Rankings</a>
-      <div class="right item"><p>Welcome, {{ user }}</p></div>
+      <div class="right item"><p>Logged in as {{ user }}</p></div>
+      <a class="item" href="{{pathFor 'Help_Page'}}">Help</a>
       {{> Cas_Login }}
     {{else}}
       <a class="item" href="{{pathFor 'Public_Landing_Page'}}"><h1>Get Good</h1></a>

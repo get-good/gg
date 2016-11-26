@@ -114,6 +114,13 @@ FlowRouter.route('/edit-profile', {
   },
 });
 
+FlowRouter.route('/help', {
+  name: 'Help_Page',
+  action() {
+    BlazeLayout.render('App_Body', { main: 'Help_Page' });
+  },
+});
+
 FlowRouter.notFound = {
   action() {
     BlazeLayout.render('App_Body', { main: 'App_Not_Found' });
