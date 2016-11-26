@@ -46,6 +46,8 @@ Template.events.onRendered(() => {
 
       eventDurationEditable: true,
 
+      schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+
       header: {
         left: 'prev,next today',
         center: 'title',
@@ -117,8 +119,4 @@ Template.events.onRendered(() => {
       $('#events-calendar').fullCalendar('refetchEvents');
     });
   });
-});
-
-$('#events-calendar').fullCalendar({
-  schedulerLicenseKey: 'GPL-My-Project-Is-Open-Source'
 });
