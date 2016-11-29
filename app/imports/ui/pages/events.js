@@ -3,10 +3,10 @@ let isPast = (date) => {
   return moment(today).isAfter(date);
 };
 
-//function to calculate window height
-function get_calendar_height() {
-  return $(window).height() - 30;
-}
+// //function to calculate window height
+// function get_calendar_height() {
+//   return $(window).height() - 30;
+// }
 
 Template.events.onCreated(() => {
   let template = Template.instance();
@@ -16,7 +16,7 @@ Template.events.onCreated(() => {
 Template.events.onRendered(() => {
   $(document).ready(function () {
     $(window).resize(function () {
-      $('#calendar').fullCalendar('option', 'height', get_calendar_height());
+      $('#calendar').fullCalendar('option');
     });
 
     $('#events-calendar').fullCalendar({
@@ -42,7 +42,7 @@ Template.events.onRendered(() => {
         }
       },
 
-      height: get_calendar_height,
+      // height: get_calendar_height,
 
       eventDurationEditable: true,
 

@@ -1,21 +1,54 @@
 <template name="Header">
-  <!--<img style="max-height: 220px;" class="ui fluid image" src="/images/getgud.jpg">-->
-  <div style="margin-top: 0; border-radius: 0;" class="ui top borderless fixed inverted menu">
-  <div class="ui container">
-    {{#if currentUser}}
-      <div class="item"><h1>Get Good</h1></div>
-      <a class="item" href="{{pathFor 'User_Home_Page'}}">Home</a>
-      <!--<a class="item" href="{{pathFor 'Admin_Home_Page'}}">Admin Home</a>-->
-      <a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a>
-      <a class="item" href="{{pathFor 'events'}}">Calendar</a>
-      <a class="item" href="{{pathFor 'Rankings_Page'}}">Rankings</a>
-      <div class="right item"><p>{{> Cas_Login }}</p></div>
-      <a class="item" href="{{pathFor 'Help_Page'}}">Help</a>
-      <a>{{> Notify}}</a>
-    {{else}}
-      <a class="item" href="{{pathFor 'Public_Landing_Page'}}"><h1>Get Good</h1></a>
-      <a class="right item"><p>{{> Cas_Login }}</p></a>
-    {{/if}}
+
+  <div class="header">
+    <div class="team-menu">Get Good</div>
+  </div>
+  <div class="main">
+
+    <div class="listings">
+      <div class="listings_channels">
+        {{#if currentUser}}
+          <h4><a class="item" href="{{pathFor 'User_Home_Page'}}">Home</a></h4>
+          <!--<a class="item" href="{{pathFor 'Admin_Home_Page'}}">Admin Home</a>-->
+          <h4><a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a></h4>
+          <h4><a class="item" href="{{pathFor 'events'}}">Calendar</a></h4>
+          <h4></h4>
+          <h4><div class="item"><p>{{> Cas_Login }}</p></div></h4>
+          <h4><p>{{> Notify}}</p></h4>
+          <h4><a class="item" href="{{pathFor 'Help_Page'}}">Help</a></h4>
+        {{else}}
+          <a class="right item"><p>{{> Cas_Login }}</p></a>
+        {{/if}}
+      </div>
+    </div>
+
+  </div>
+  <div class="footer">
+    <div class="user-menu">
+      <span class="user-menu_profile-pic"></span>
+      <span class="user-menu_username">User</span>
     </div>
   </div>
+
+
+
+  <!--<img style="max-height: 220px;" class="ui fluid image" src="/images/getgud.jpg">-->
+  <!--<div style="margin-top: 0; border-radius: 0;" class="ui top borderless fixed inverted menu">-->
+  <!--<div class="ui container">-->
+    <!--{{#if currentUser}}-->
+      <!--<div class="item"><h1>Get Good</h1></div>-->
+      <!--<a class="item" href="{{pathFor 'User_Home_Page'}}">Home</a>-->
+      <!--&lt;!&ndash;<a class="item" href="{{pathFor 'Admin_Home_Page'}}">Admin Home</a>&ndash;&gt;-->
+      <!--<a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a>-->
+      <!--<a class="item" href="{{pathFor 'events'}}">Calendar</a>-->
+      <!--<a class="item" href="{{pathFor 'Rankings_Page'}}">Rankings</a>-->
+      <!--<div class="right item"><p>{{> Cas_Login }}</p></div>-->
+      <!--<a class="item" href="{{pathFor 'Help_Page'}}">Help</a>-->
+      <!--<a>{{> Notify}}</a>-->
+    <!--{{else}}-->
+      <!--<a class="item" href="{{pathFor 'Public_Landing_Page'}}"><h1>Get Good</h1></a>-->
+      <!--<a class="right item"><p>{{> Cas_Login }}</p></a>-->
+    <!--{{/if}}-->
+    <!--</div>-->
+  <!--</div>-->
 </template>

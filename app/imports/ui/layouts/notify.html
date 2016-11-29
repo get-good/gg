@@ -1,9 +1,9 @@
 <template name="Notify">
   <!--<div class="ui container">-->
-    <div style="background: #1b1c1d; color: white;" class="ui fluid selection dropdown">
-      <div style="color: white" class="item"><span class="circ">{{count}}</span></div>
-      <i class="bell outline icon"></i>
-      <div class="menu">
+    <div class="ui simple dropdown item">
+      <i class="item"><span class="unread">{{count}}</span></i>
+      Notifications
+      <div class="right menu">
         {{#each event}}
           {{#if this}}
             <div class="item"><a style="color: black" href="/calendar">{{this}}</a></div>
@@ -11,6 +11,7 @@
           {{/if}}
         {{/each}}
       </div>
+      <i class="dropdown icon"></i>
     </div>
   <!--</div>-->
 </template>
