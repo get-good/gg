@@ -119,4 +119,22 @@ Template.events.onRendered(() => {
       $('#events-calendar').fullCalendar('refetchEvents');
     });
   });
-});
+  if(showTutorial) {
+    new Confirmation({
+      message: "Here you can add, edit and remove a session from your current calendar! To begin, please select a date.",
+      title: "Calendar",
+      cancelText: "Quit Tutorial",
+      okText: "Next Page",
+      success: true, // whether the button should be green or red
+      focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
+    }, function (ok) {
+      if (!ok) {
+        FlowRouter.go('events');
+        showTutorial = false;
+        return;
+      }
+      FlowRouter.go('Rankings_Page');
+    });
+    return false;
+  }
+  });
