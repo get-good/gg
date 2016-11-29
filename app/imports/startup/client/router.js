@@ -22,9 +22,6 @@ FlowRouter.route('/home', {
   name: 'User_Home_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'User_Home_Page' });
-    setTimeout(function () {
-    alert('This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links in the navbar!');
-  }, 400);
   },
 });
 
@@ -39,9 +36,6 @@ FlowRouter.route('/profile', {
   name: 'User_Profile_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'User_Profile_Page' });
-    setTimeout(function () {
-      alert('This is your profile! Here you may edit the courses you have taken and for which you are willing to provide help for! You may also select which classes you are currently taking and for which you may need help!');
-    }, 400);
   },
 });
 
@@ -49,9 +43,6 @@ FlowRouter.route('/calendar', {
   name: 'events',
   action() {
     BlazeLayout.render('App_Body', { main: 'events' });
-    setTimeout(function () {
-      alert('Here you can add, edit and remove a session from your current calendar! To begin, please select a date.');
-    }, 400);
   },
 });
 
@@ -59,9 +50,6 @@ FlowRouter.route('/rankings', {
   name: 'Rankings_Page',
   action() {
     BlazeLayout.render('App_Body', { main: 'Rankings_Page' });
-    setTimeout(function () {
-      alert('The rankings for all senseis are displayed here. Strive to be the top sensei!');
-    }, 400);
   },
 });
 

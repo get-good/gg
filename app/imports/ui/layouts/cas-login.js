@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 
 Template.Cas_Login.helpers({
   user: function user() {
-    return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
+    return Meteor.user() ? Meteor.user().profile.name : '  please login';
   },
 })
 
@@ -13,6 +13,14 @@ Template.Cas_Login.events({
    * @param event The click event.
    * @returns {boolean} False.
    */
+  'click .profile': function profile(event) {
+    event.preventDefault();
+    FlowRouter.go('User_Profile_Page');
+  },
+  'click .help': function help(event) {
+    event.preventDefault();
+    FlowRouter.go('Help_Page');
+  },
   'click .cas-logout': function casLogout(event) {
     event.preventDefault();
     Meteor.logout();
