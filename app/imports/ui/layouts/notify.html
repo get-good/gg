@@ -1,16 +1,52 @@
 <template name="Notify">
   <!--<div class="ui container">-->
+  <div class="right menu">
     <div class="ui simple dropdown item">
       <i class="item"><span class="unread">{{count}}</span></i>
-      Notifications
+      Alerts
       <div class="right menu">
         {{#each event}}
           {{#if this}}
-            <div class="item"><a style="color: black" href="/calendar">{{this}}</a></div>
+            <a class="item" style="color: black;font-size: 12px;" href="/calendar">{{this}}</a>
             <div class="divider"></div>
           {{/if}}
         {{/each}}
       </div>
     </div>
+  </div>
   <!--</div>-->
 </template>
+
+<!--<div class="right menu">-->
+  <!--<div class="ui dropdown item">-->
+    <!--Language <i class="dropdown icon"></i>-->
+    <!--<div class="menu">-->
+      <!--<a class="item">English</a>-->
+      <!--<a class="item">Russian</a>-->
+      <!--<a class="item">Spanish</a>-->
+    <!--</div>-->
+  <!--</div>-->
+
+
+  <!--<div class="ui mini menu">-->
+  <!--<a class="active item">-->
+  <!--Home-->
+  <!--</a>-->
+  <!--<a class="item">-->
+  <!--Messages-->
+  <!--</a>-->
+  <!--<div class="right menu">-->
+  <!--<div class="ui dropdown item">-->
+  <!--Language <i class="dropdown icon"></i>-->
+  <!--<div class="menu">-->
+  <!--<a class="item">English</a>-->
+  <!--<a class="item">Russian</a>-->
+  <!--<a class="item">Spanish</a>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="item">-->
+  <!--<div class="ui primary button">Sign Up</div>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
+

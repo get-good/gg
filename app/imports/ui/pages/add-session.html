@@ -1,7 +1,7 @@
 <template name="Add_Session">
-  {{#if currentUser}}
-    <div class="ui container">
-      <div class="modal fade" id="add-edit-event-modal" tabindex="-1" role="dialog"
+  <div class="ui grid">
+    <div class="sixteen wide column">
+      <div style="margin-left:300px; width: 800px;" class="modal fade" id="add-edit-event-modal" tabindex="-1" role="dialog"
            aria-labelledby="add-edit-event-modal">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -43,9 +43,5 @@
         </div>
       </div>
     </div>
-  {{else}}
-    <div class="ui container">
-      <h2 class="ui centered header">Please log in to access this page.</h2>
-    </div>
-  {{/if}}
+  </div>
 </template>
