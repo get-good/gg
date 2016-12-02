@@ -5,21 +5,30 @@
   </div>
   <div class="main">
 
-    <div class="listings">
-      <div class="listings_channels">
-        {{#if currentUser}}
+    {{#if currentUser}}
+      <div class="listings">
+        <div class="listings_channels">
           <h4><a class="item" href="{{pathFor 'User_Home_Page'}}">Home</a></h4>
           <!--<a class="item" href="{{pathFor 'Admin_Home_Page'}}">Admin Home</a>-->
           <!--<h4><a class="item" href="{{pathFor 'User_Profile_Page'}}">Profile</a></h4>-->
           <!--<h4><a class="item" href="{{pathFor 'rankings'}}">Ranking</a></h4>-->
           <h4><a class="item" href="{{pathFor 'events'}}">Calendar</a></h4>
+          <!--<h4>-->
+          <!--<div class="item"><p>{{> Cas_Login }}</p></div>-->
+          <!--</h4>-->
           <h4><p>{{> Notify}}</p></h4>
           <h4><a class="item" href="{{pathFor 'Help_Page'}}">Help</a></h4>
-        {{else}}
-          <a class="right item"><p>{{> Cas_Login }}</p></a>
-        {{/if}}
+        </div>
       </div>
-    </div>
+    {{else}}
+      <div class="listings">
+        <div class="listings_channels">
+          <h4>
+            <div class="item"><p>{{> Cas_Login }}</p></div>
+          </h4>
+        </div>
+      </div>
+    {{/if}}
 
   </div>
 
@@ -27,9 +36,13 @@
 
     <div class="user-menu">
       <span class="user-menu_profile-pic"></span>
-      <a href="{{pathFor 'User_Profile_Page'}}">
-        <span class="user-menu_username">{{user}}</span>
-      </a>
+      {{#if currentUser}}
+        <a href="{{pathFor 'User_Profile_Page'}}">
+          <span class="user-menu_username">{{user}}</span>
+        </a>
+      {{else}}
+        <a><span class="user-menu_username">{{user}}</span></a>
+      {{/if}}
     </div>
 
   </div>

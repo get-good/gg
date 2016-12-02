@@ -32,7 +32,7 @@ Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
     new Confirmation({
       message: "This is your profile! Here you may edit the courses you have taken and for which you are willing to provide help for! You may also select which classes you are currently taking and for which you may need help!",
       title: "Profile",
-      cancelText: "quit Tutorial",
+      cancelText: "Quit Tutorial",
       okText: "Next Page",
       success: true, // whether the button should be green or red
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"

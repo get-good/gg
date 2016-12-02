@@ -13,6 +13,8 @@ Template.Header.helpers({
 });
 
 
-Template.Header.helpers({
-
-})
+Template.Header.onRendered(function enableDropDown() {
+  this.$('.dropdown').dropdown({
+    action: 'select',
+  });
+});
