@@ -1,7 +1,25 @@
 <template name="Rankings_Page">
   {{#if currentUser}}
     <div class="ui grid">
-      <div class="twelve wide columnd">
+      <div class="three wide column">
+        <img class="ui small circular image" src="http://i.imgur.com/LikUNLc.png"/>
+        <div style="width:200px" class="ui vertical menu">
+          <a class="item" href="{{pathFor 'about'}}">
+            About
+          </a>
+          <a class="item" href="{{pathFor 'Rankings_Page'}}">
+            Rating
+          </a>
+          <a class="item" href="{{pathFor 'Edit_Profile'}}">
+            Edit
+          </a>
+          <a class="item cas-logout">
+            Logout
+          </a>
+        </div>
+      </div>
+
+      <div class="twelve wide column">
         <h1>Rankings</h1>
         <table style="margin-top: 20px;" class="ui compact celled striped definition table ">
           <thead>

@@ -7,6 +7,12 @@ Template.User_Home_Page.events({
     event.preventDefault();
     FlowRouter.go('About');
   },
+  'click .cas-logout': function casLogout(event) {
+    event.preventDefault();
+    Meteor.logout();
+    FlowRouter.go('Public_Landing_Page');
+    return false;
+  },
 
 });
 

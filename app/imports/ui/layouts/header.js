@@ -11,3 +11,8 @@ Template.Header.helpers({
     return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
   },
 });
+
+
+Template.Header.helpers({
+
+})

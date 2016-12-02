@@ -19,3 +19,12 @@ Template.Rankings_Page.onRendered(function tutorialRankings() {
     return false;
   }
 });
+
+Template.Rankings_Page.events({
+  'click .cas-logout': function casLogout(event) {
+    event.preventDefault();
+    Meteor.logout();
+    FlowRouter.go('Public_Landing_Page');
+    return false;
+  },
+})

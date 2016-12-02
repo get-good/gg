@@ -13,11 +13,17 @@ Template.User_Profile_Page.events({
   },
   'click .rating'(event) {
     event.preventDefault();
-    FlowRouter.go('rating');
+    FlowRouter.go('Rankings_Page');
   },
   'click .edit'(event) {
     event.preventDefault();
     FlowRouter.go('Edit_Profile');
+  },
+  'click .cas-logout': function casLogout(event) {
+    event.preventDefault();
+    Meteor.logout();
+    FlowRouter.go('Public_Landing_Page');
+    return false;
   },
 });
 

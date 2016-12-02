@@ -1,19 +1,22 @@
 <template name="About">
   {{#if currentUser}}
-  <div class="ui left aligned grid text container">
+  <div class="ui grid">
 
-    <div class="four wide column">
+    <div class="three wide column">
       <img class="ui small circular image" src="http://i.imgur.com/LikUNLc.png"/>
-      <div class="ui segments">
-        <div class="ui button about">
-          <p class="item">About</p>
-        </div>
-        <div class="ui button rating">
-          <p class="item">Rating</p>
-        </div>
-        <div class="ui button edit">
-          <p class="item">Edit</p>
-        </div>
+      <div style="width:200px" class="ui vertical menu">
+        <a class="item" href="{{pathFor 'about'}}">
+          About
+        </a>
+        <a class="item" href="{{pathFor 'Rankings_Page'}}">
+          Rating
+        </a>
+        <a class="item" href="{{pathFor 'Edit_Profile'}}">
+          Edit
+        </a>
+        <a class="item cas-logout">
+          Logout
+        </a>
       </div>
     </div>
 
