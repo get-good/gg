@@ -3,7 +3,9 @@
     <div class="ui grid">
 
       <div class="three wide column">
-        <img class="ui small circular image" src="http://i.imgur.com/LikUNLc.png"/>
+        {{#each profile in ProfileList}}
+          <img class="ui small circular image" src="{{profile.pic}}"/>
+        {{/each}}
         <div style="width:200px" class="ui vertical menu">
           <a class="item" href="{{pathFor 'about'}}">
             About
@@ -11,8 +13,8 @@
           <a class="item" href="{{pathFor 'Rankings_Page'}}">
             Rating
           </a>
-          <a class="item" href="{{pathFor 'Edit_Profile'}}">
-            Edit
+          <a class="item" href="{{pathFor 'User_Profile_Page'}}">
+            Profile
           </a>
           <a class="item cas-logout">
             Logout
@@ -20,13 +22,13 @@
         </div>
       </div>
 
-    <div class="twelve wide column">
-      <h1>Welcome!</h1>
-      <p>This is your home page! From here, you can edit your profile,
-        read your about page and even check your current helper rating.</p>
-      <p>When you're ready to explore, feel free to click any of the links up top!</p>
+      <div class="twelve wide column">
+        <h1>Welcome!</h1>
+        <p>This is your home page! From here, you can edit your profile,
+          read your about page and even check your current helper rating.</p>
+        <p>When you're ready to explore, feel free to click any of the links up top!</p>
 
-    </div>
+      </div>
     </div>
 
   {{else}}
@@ -41,9 +43,9 @@
     //        }
     //        ;
     //      }
-//    $(window).load(function(){
-//      alert('This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links up top!');
-//    });
+    //    $(window).load(function(){
+    //      alert('This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links up top!');
+    //    });
   </script>
 
 </template>

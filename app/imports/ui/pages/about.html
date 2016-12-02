@@ -1,32 +1,43 @@
 <template name="About">
   {{#if currentUser}}
-  <div class="ui grid">
+    <div class="ui grid">
 
-    <div class="three wide column">
-      <img class="ui small circular image" src="http://i.imgur.com/LikUNLc.png"/>
-      <div style="width:200px" class="ui vertical menu">
-        <a class="item" href="{{pathFor 'about'}}">
-          About
-        </a>
-        <a class="item" href="{{pathFor 'Rankings_Page'}}">
-          Rating
-        </a>
-        <a class="item" href="{{pathFor 'Edit_Profile'}}">
-          Edit
-        </a>
-        <a class="item cas-logout">
-          Logout
-        </a>
+      <div class="three wide column">
+        {{#each profile in ProfileList}}
+          <img class="ui small circular image" src="{{profile.pic}}"/>
+        {{/each}}
+        <div style="width:200px" class="ui vertical menu">
+          <a class="item" href="{{pathFor 'about'}}">
+            About
+          </a>
+          <a class="item" href="{{pathFor 'Rankings_Page'}}">
+            Rating
+          </a>
+          <a class="item" href="{{pathFor 'User_Profile_Page'}}">
+            Profile
+          </a>
+          <a class="item cas-logout">
+            Logout
+          </a>
+        </div>
       </div>
+
+      <div class="twelve wide column">
+        <h1>It's all About me</h1>
+        {{#each profile in ProfileList}}
+          <p>{{profile.about}}</p>
+        {{/each}}
+        <h1>Sensei</h1>
+        {{#each profile in ProfileList}}
+          <p>{{profile.sensei}}</p>
+        {{/each}}
+        <h1>Grasshopper</h1>
+        {{#each profile in ProfileList}}
+          <p>{{profile.grass}}</p>
+        {{/each}}
+      </div>
+
     </div>
-
-    <div class="twelve wide column">
-      <h1>It's all About me</h1>
-      <p>My name is Anthony Kuloloia and I'm a Computer Science major at UH of Manoa.</p>
-
-    </div>
-
-  </div>
   {{else}}
     <div class="ui container">
       <h2 class="ui centered header">Please log in to access this page.</h2>

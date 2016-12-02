@@ -95,7 +95,7 @@ FlowRouter.route('/user-rating', {
   },
 });
 
-FlowRouter.route('/edit-profile', {
+FlowRouter.route('/edit-profile/:_id', {
   name: 'Edit_Profile',
   action() {
     BlazeLayout.render('App_Body', { main: 'Edit_Profile' });

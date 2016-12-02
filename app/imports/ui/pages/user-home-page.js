@@ -1,3 +1,9 @@
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Template } from 'meteor/templating';
+import { _ } from 'meteor/underscore';
+import { Profile, ProfileSchema } from '../../api/profile/profile.js';
+
 // $(document).ready(function(){
 //   alert('This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links up top!');
 // });
@@ -15,6 +21,12 @@ Template.User_Home_Page.events({
   },
 
 });
+
+Template.User_Home_Page.helpers({
+  ProfileList() {
+    return Profile.find();
+  },
+})
 
 // Template.User_Home_Page.check = function(){
 //   setTimeout(function() {

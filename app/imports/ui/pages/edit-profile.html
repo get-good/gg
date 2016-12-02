@@ -1,30 +1,94 @@
 <template name="Edit_Profile">
   {{#if currentUser}}
-  <div class="ui grid">
+    <div class="ui grid">
 
-    <div class="three wide column">
-      <img class="ui small circular image" src="http://i.imgur.com/LikUNLc.png"/>
-      <div style="width:200px" class="ui vertical menu">
-        <a class="item" href="{{pathFor 'about'}}">
-          About
-        </a>
-        <a class="item" href="{{pathFor 'Rankings_Page'}}">
-          Rating
-        </a>
-        <a class="item" href="{{pathFor 'Edit_Profile'}}">
-          Edit
-        </a>
-        <a class="item cas-logout">
-          Logout
-        </a>
+      <div class="three wide column">
+        <img class="ui small circular image" src="{{picture.pic}}"/>
+        <div style="width:200px" class="ui vertical menu">
+          <a class="item" href="{{pathFor 'about'}}">
+            About
+          </a>
+          <a class="item" href="{{pathFor 'Rankings_Page'}}">
+            Rating
+          </a>
+          <a class="item" href="{{pathFor 'User_Profile_Page'}}">
+            Profile
+          </a>
+          <a class="item cas-logout">
+            Logout
+          </a>
+        </div>
+      </div>
+
+      <div class="twelve wide column">
+        {{#if Template.subscriptionsReady}}
+          <div style="margin-top: 20px" class="ui container">
+            <form class="ui form contact-data-form {{ errorClass }}">
+              <h2>Edit Profile</h2>
+              <div class="field">
+                <label>Profile Picture</label>
+                <div class="one field">
+                  <div class="field">
+                    <input type="text" name="pic" id="pic" placeholder="Profile Picture"
+                           value="{{ contactField 'pic' }}">
+                    {{#if displayFieldError 'pic' }}
+                      <div class="ui error message">
+                        <p>You must specify your profile picture.</p>
+                      </div>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>About</label>
+                <div class="one field">
+                  <div class="field">
+                    <input type="text" name="about" id="about" placeholder="About Me"
+                           value="{{ contactField 'about' }}">
+                    {{#if displayFieldError 'pic' }}
+                      <div class="ui error message">
+                        <p>You must specify your about me statement.</p>
+                      </div>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Sensei Class(es)</label>
+                <div class="one field">
+                  <div class="field">
+                    <input type="text" name="sensei" id="sensei" placeholder="Sensei Classes"
+                           value="{{ contactField 'sensei' }}">
+                    {{#if displayFieldError 'pic' }}
+                      <div class="ui error message">
+                        <p>You must specify your sensei classes.</p>
+                      </div>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label>Grasshopper Class(es)</label>
+                <div class="one field">
+                  <div class="field">
+                    <input type="text" name="grass" id="grass" placeholder="Grasshopper Classes"
+                           value="{{ contactField 'grass' }}">
+                    {{#if displayFieldError 'pic' }}
+                      <div class="ui error message">
+                        <p>You must specify your grasshopper classes.</p>
+                      </div>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+              <button class="ui button" type="submit">Update</button>
+
+            </form>
+          </div>
+        {{/if}}
+
       </div>
     </div>
-
-    <div class="twelve wide column">
-      <h2>Edit Settings</h2>
-      <p>Here you can edit your </p>
-    </div>
-  </div>
   {{else}}
     <div class="ui container">
       <h2 class="ui centered header">Please log in to access this page.</h2>

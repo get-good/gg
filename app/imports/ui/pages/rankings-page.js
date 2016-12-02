@@ -1,3 +1,9 @@
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Template } from 'meteor/templating';
+import { _ } from 'meteor/underscore';
+import { Profile, ProfileSchema } from '../../api/profile/profile.js';
+
 Template.Rankings_Page.onRendered(function tutorialRankings() {
   if(showTutorial) {
     new Confirmation({
@@ -27,4 +33,10 @@ Template.Rankings_Page.events({
     FlowRouter.go('Public_Landing_Page');
     return false;
   },
-})
+});
+
+Template.Rankings_Page.helpers({
+  ProfileList() {
+    return Profile.find();
+  },
+});

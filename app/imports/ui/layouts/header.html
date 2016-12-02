@@ -35,7 +35,9 @@
   <div class="footer">
 
     <div class="user-menu">
-      <span class="user-menu_profile-pic"></span>
+      {{#each profile in ProfileList}}
+        <img src="{{profile.pic}}" class="user-menu_profile-pic"/>
+      {{/each}}
       {{#if currentUser}}
         <a href="{{pathFor 'User_Profile_Page'}}">
           <span class="user-menu_username">{{user}}</span>

@@ -1,7 +1,7 @@
-.ui.button{
-  border-color: black;
-  background-color: white;
-}
+/*.ui.button{*/
+  /*border-color: black;*/
+  /*background-color: white;*/
+/*}*/
 
 .ui.simple.dropdown.item{
   display: inline-block;
@@ -332,8 +332,8 @@ body {
   border-radius: 0.2rem;
   width: 48px;
   height: 48px;
-  background-image: url("http://i.imgur.com/LikUNLc.png");
-  background-size: cover;
+  /*background-image: url("http://i.imgur.com/LikUNLc.png");*/
+  /*background-size: cover;*/
   margin-right: 8px;
 }
 

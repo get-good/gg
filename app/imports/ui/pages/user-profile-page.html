@@ -3,7 +3,9 @@
     <div class="ui grid">
 
       <div class="three wide column">
-        <img class="ui small circular image" src="http://i.imgur.com/LikUNLc.png"/>
+        {{#each profile in ProfileList}}
+          <img class="ui small circular image" src="{{profile.pic}}"/>
+        {{/each}}
         <div style="width:200px" class="ui vertical menu">
           <a class="item" href="{{pathFor 'about'}}">
             About
@@ -11,8 +13,8 @@
           <a class="item" href="{{pathFor 'Rankings_Page'}}">
             Rating
           </a>
-          <a class="item" href="{{pathFor 'Edit_Profile'}}">
-            Edit
+          <a class="item" href="{{pathFor 'User_Profile_Page'}}">
+            Profile
           </a>
           <a class="item cas-logout">
             Logout
@@ -24,24 +26,27 @@
         <h1>Hiya!</h1>
         <p>This is your profile! Here you may edit the courses you have taken and for which you are willing to provide
           help for! You may also select which classes you are currently taking and for which you may need help!</p>
-        <h1>Sensei (Provide Help)</h1>
 
         {{#if Template.subscriptionsReady}}
           <table style="margin-top: 20px" class="ui celled table">
             <thead>
             <tr>
-              <th>Class</th>
+              <th>Profile Picture</th>
+              <th>About</th>
+              <th>Sensei</th>
+              <th>Grasshopper</th>
+              <th>Edit</th>
             </tr>
             </thead>
 
             <tbody>
-            <tr>
-              <td>ICS 311</td>
-            </tr>
-            {{#each contact in ContactsList}}
+            {{#each profile in ProfileList}}
               <tr>
-                <td>{{sensei.class}}</td>
-                <td><a href="{{pathFor 'Edit_Sensei' _id=contact._id}}">Edit</a></td>
+                <td>{{profile.pic}}</td>
+                <td>{{profile.about}}</td>
+                <td>{{profile.sensei}}</td>
+                <td>{{profile.grass}}</td>
+                <td><a href="{{pathFor 'Edit_Profile' _id=profile._id}}">Edit</a></td>
               </tr>
             {{/each}}
             </tbody>
@@ -50,37 +55,6 @@
           {{> Loading}}
         {{/if}}
 
-        <div class="ui button sensei">Add</div>
-
-        <h1>Grasshopper (Receive Help)</h1>
-
-        {{#if Template.subscriptionsReady}}
-          <table style="margin-top: 20px" class="ui celled table">
-            <thead>
-            <tr>
-              <th>Class</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <tr>
-              <td>
-                ICS 111
-              </td>
-            </tr>
-            {{#each contact in ContactsList}}
-              <tr>
-                <td>{{grasshopper.class}}</td>
-                <td><a href="{{pathFor 'Edit_Grasshopper' _id=contact._id}}">Edit</a></td>
-              </tr>
-            {{/each}}
-            </tbody>
-          </table>
-        {{else}}
-          {{> Loading}}
-        {{/if}}
-
-        <div class="ui button grass">Add</div>
 
       </div>
 

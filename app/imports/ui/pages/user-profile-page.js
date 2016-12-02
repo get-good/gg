@@ -1,3 +1,9 @@
+import { ReactiveDict } from 'meteor/reactive-dict';
+import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Template } from 'meteor/templating';
+import { _ } from 'meteor/underscore';
+import { Profile, ProfileSchema } from '../../api/profile/profile.js';
+
 Template.User_Profile_Page.events({
   'click .about'(event) {
     event.preventDefault();
@@ -46,4 +52,16 @@ Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
     });
     return false;
   }
+});
+
+Template.User_Profile_Page.helpers({
+  ProfileList() {
+    return Profile.find();
+  },
+});
+
+Template.User_Profile_Page.onCreated(function onCreated() {
+  this.autorun(() => {
+    this.subscribe('Profile');
+  });
 });
