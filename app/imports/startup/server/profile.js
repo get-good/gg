@@ -8,11 +8,12 @@ const ProfileSeeds = [
     firstLogin: true,
     sensei: 'ICS 332',
     grass: 'ICS 314',
+    createdBy: 'mdDJK3GNT2r8dEXBB',
   }
 ];
 
-if (Profile.find().count() === 0){
-  _.each(ProfileSeeds, function seedProfile(stuff){
-    Profile.insert(stuff);
-  });
-}
+// if (Profile.find().count() === 0){
+//   _.each(ProfileSeeds, function seedProfile(stuff){
+//     Profile.insert(stuff);
+//   });
+// }

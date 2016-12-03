@@ -89,7 +89,10 @@ Template.About.helpers({
     return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
   },
   ProfileList() {
-    return Profile.find();
+    var currentUser = Meteor.userId();
+    console.log(Profile.find({ createdBy: currentUser }).fetch());
+    console.log(Profile.find().fetch());
+    return Profile.find({ createdBy: currentUser });
   },
 });
 

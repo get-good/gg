@@ -56,7 +56,8 @@ Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
 
 Template.User_Profile_Page.helpers({
   ProfileList() {
-    return Profile.find();
+    var currentUser = Meteor.userId();
+    return Profile.find({ createdBy: currentUser });
   },
 });
 

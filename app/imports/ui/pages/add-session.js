@@ -39,6 +39,8 @@ Template.Add_Session.events({
   'submit form' ( event, template ) {
     event.preventDefault();
 
+    var currentUser = Meteor.userId();
+
     let eventModal = Session.get( 'eventModal' ),
         submitType = eventModal.type === 'edit' ? 'editEvent' : 'addEvent',
         eventItem  = {
@@ -49,10 +51,9 @@ Template.Add_Session.events({
           type: template.find( '[name="type"]' ).value,
         };
 
-        console.log(eventItem);
-
     if ( submitType === 'editEvent' ) {
       eventItem._id   = eventModal.event;
+      createdBy: currentUser;
     }
 
     Meteor.call( submitType, eventItem, ( error ) => {

@@ -1,9 +1,8 @@
-import { ReactiveDict } from 'meteor/reactive-dict';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { Template } from 'meteor/templating';
-import { _ } from 'meteor/underscore';
-import { Profile, ProfileSchema } from '../../api/profile/profile.js';
-
+import {ReactiveDict} from 'meteor/reactive-dict';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+import {Template} from 'meteor/templating';
+import {_} from 'meteor/underscore';
+import {Profile, ProfileSchema} from '../../api/profile/profile.js';
 
 const displayErrorMessages = 'displayErrorMessages';
 
@@ -15,7 +14,6 @@ Template.Edit_Profile.onCreated(function onCreated() {
   this.messageFlags.set(displayErrorMessages, false);
   this.context = ProfileSchema.namedContext('Edit_Profile');
 });
-
 
 Template.Edit_Profile.helpers({
   contactField(fieldName) {
@@ -51,12 +49,14 @@ Template.Edit_Profile.events({
   'submit .contact-data-form'(event, instance) {
     event.preventDefault();
     // Get name (text field)
+    var currentUser = Meteor.userId();
     const pic = event.target.pic.value;
     const about = event.target.about.value;
-    const firstLogin = true;
+    const firstLogin = false;
     const sensei = event.target.sensei.value;
     const grass = event.target.grass.value;
-    const updatedProfile = { pic,about,firstLogin,sensei,grass };
+    const createdBy = currentUser;
+    const updatedProfile = { pic, about, firstLogin, sensei, grass, createdBy };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newStudentData reflects what will be inserted.
@@ -64,8 +64,17 @@ Template.Edit_Profile.events({
     // Determine validity.
     instance.context.validate(updatedProfile);
     if (instance.context.isValid()) {
+      // Profile.insert({
+      //   pic: event.target.pic.value,
+      //   about: event.target.about.value,
+      //   firstLogin: true,
+      //   sensei: event.target.sensei.value,
+      //   grass: event.target.grass.value,
+      //   createdBy: currentUser,
+      // });
       Profile.update(FlowRouter.getParam('_id'), { $set: updatedProfile });
       instance.messageFlags.set(displayErrorMessages, false);
+      console.log(Profile.find().fetch());
       FlowRouter.go('About');
     } else {
       instance.messageFlags.set(displayErrorMessages, true);

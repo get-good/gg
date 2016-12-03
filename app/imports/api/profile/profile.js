@@ -24,6 +24,10 @@ export const ProfileSchema = new SimpleSchema({
     type: String,
     label: 'When this event will start.'
   },
+  'createdBy': {
+    type: String,
+    label: 'The title of this event.'
+  },
 });
 
 Profile.attachSchema(ProfileSchema);

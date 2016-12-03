@@ -37,6 +37,7 @@ Template.Rankings_Page.events({
 
 Template.Rankings_Page.helpers({
   ProfileList() {
-    return Profile.find();
+    var currentUser = Meteor.userId();
+    return Profile.find({ createdBy: currentUser });
   },
 });
