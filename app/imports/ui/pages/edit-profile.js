@@ -52,10 +52,18 @@ Template.Edit_Profile.events({
     var currentUser = Meteor.userId();
     const pic = event.target.pic.value;
     const about = event.target.about.value;
-    const firstLogin = false;
+    const popup = event.target.popup.value;
     const sensei = event.target.sensei.value;
     const grass = event.target.grass.value;
     const createdBy = currentUser;
+    let firstLogin = false;
+
+    console.log(popup);
+
+    if(popup == 'yes' || popup == 'Yes') {
+      firstLogin = true;
+    }
+
     const updatedProfile = { pic, about, firstLogin, sensei, grass, createdBy };
     // Clear out any old validation errors.
     instance.context.resetValidation();

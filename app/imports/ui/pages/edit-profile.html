@@ -45,7 +45,7 @@
                   <div class="field">
                     <input type="text" name="about" id="about" placeholder="About Me"
                            value="{{ contactField 'about' }}">
-                    {{#if displayFieldError 'pic' }}
+                    {{#if displayFieldError 'about' }}
                       <div class="ui error message">
                         <p>You must specify your about me statement.</p>
                       </div>
@@ -59,7 +59,7 @@
                   <div class="field">
                     <input type="text" name="sensei" id="sensei" placeholder="Sensei Classes"
                            value="{{ contactField 'sensei' }}">
-                    {{#if displayFieldError 'pic' }}
+                    {{#if displayFieldError 'sensei' }}
                       <div class="ui error message">
                         <p>You must specify your sensei classes.</p>
                       </div>
@@ -73,7 +73,7 @@
                   <div class="field">
                     <input type="text" name="grass" id="grass" placeholder="Grasshopper Classes"
                            value="{{ contactField 'grass' }}">
-                    {{#if displayFieldError 'pic' }}
+                    {{#if displayFieldError 'grass' }}
                       <div class="ui error message">
                         <p>You must specify your grasshopper classes.</p>
                       </div>
@@ -81,6 +81,26 @@
                   </div>
                 </div>
               </div>
+              <div class="field">
+                <label>Display Tutorial Popup</label>
+                <div class="one field">
+                  <div class="field">
+                    <input type="text" name="popup" id="popup" placeholder="Yes or No"
+                           value="{{ contactField 'popup' }}">
+                    {{#if displayFieldError 'popup' }}
+                      <div class="ui error message">
+                        <p>You must specify your grasshopper classes.</p>
+                      </div>
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+
+              <!--<label for="type">Classification</label>-->
+              <!--<select name="type" class="form-control">-->
+                <!--<option selected="{{selected event.type 'Grasshopper' }}" value="Grasshopper">Grasshopper</option>-->
+                <!--<option selected="{{selected event.type 'Sensei' }}" value="Sensei">Sensei</option>-->
+              <!--</select>-->
               <button class="ui button" type="submit">Update</button>
 
             </form>
