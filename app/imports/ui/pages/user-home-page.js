@@ -4,10 +4,10 @@ import {Template} from 'meteor/templating';
 import {_} from 'meteor/underscore';
 import {Profile, ProfileSchema} from '../../api/profile/profile.js';
 
+showTutorial = true;
 // $(document).ready(function(){
 //   alert('This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links up top!');
 // });
-showTutorial = true;
 Template.User_Home_Page.events({
   'click .about'(event) {
     event.preventDefault();

@@ -28,6 +28,9 @@ export const ProfileSchema = new SimpleSchema({
     type: String,
     label: 'The title of this event.'
   },
+  'isAdmin': {
+    type: Boolean,
+  },
 });
 
 Profile.attachSchema(ProfileSchema);

@@ -120,7 +120,8 @@ Template.About.events({
     const firstLogin = true;
     const sensei = event.target.sensei.value;
     const grass = event.target.grass.value;
-    const updatedProfile = { pic,about,firstLogin,sensei,grass };
+    let isAdmin = false;
+    const updatedProfile = { pic,about,firstLogin,sensei,grass, isAdmin };
     // Clear out any old validation errors.
     instance.context.resetValidation();
     // Invoke clean so that newStudentData reflects what will be inserted.

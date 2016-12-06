@@ -9,6 +9,7 @@ const ProfileSeeds = [
     sensei: 'ICS 332',
     grass: 'ICS 314',
     createdBy: 'mdDJK3GNT2r8dEXBB',
+   isAdmin: false,
   }
 ];
 
