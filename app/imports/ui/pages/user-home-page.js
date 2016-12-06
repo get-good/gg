@@ -34,6 +34,7 @@ Template.User_Home_Page.helpers({
         sensei: 'ICS 332',
         grass: 'ICS 314',
         createdBy: currentUser,
+        isAdmin: false,
       })
     }
     return Profile.find({ createdBy: currentUser });
