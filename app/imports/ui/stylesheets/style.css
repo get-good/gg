@@ -38,6 +38,9 @@ a{
 }
 
 
+
+
+
 /* line 22, ../../../../../../var/lib/gems/1.9.1/gems/compass-core-1.0.3/stylesheets/compass/reset/_utilities.scss */
 html {
   line-height: 1;
@@ -128,7 +131,7 @@ body {
 
 /* line 1, ../tests/sass/components/_header.scss */
 .team-menu {
-  position: relative;
+  position: absolute;
   width: 220px;
   height: 53px;
   line-height: 53px;
@@ -393,3 +396,8 @@ body {
   text-decoration: none;
   color: inherit;
 }
+
+.zoom{
+  zoom: 120%;
+}
+

@@ -15,7 +15,8 @@ Template.Header.helpers({
     return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
   },
   ProfileList() {
-    return Profile.find();
+    var currentUser = Meteor.userId();
+    return Profile.find({ createdBy: currentUser });
   },
 });
 

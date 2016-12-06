@@ -16,7 +16,7 @@
           <!--<h4>-->
           <!--<div class="item"><p>{{> Cas_Login }}</p></div>-->
           <!--</h4>-->
-          <h4><p>{{> Notify}}</p></h4>
+          <h4><p style="position: relative">{{> Notify}}</p></h4>
           <h4><a class="item" href="{{pathFor 'Help_Page'}}">Help</a></h4>
         </div>
       </div>
@@ -35,10 +35,10 @@
   <div class="footer">
 
     <div class="user-menu">
-      {{#each profile in ProfileList}}
-        <img src="{{profile.pic}}" class="user-menu_profile-pic"/>
-      {{/each}}
       {{#if currentUser}}
+        {{#each profile in ProfileList}}
+          <img src="{{profile.pic}}" class="user-menu_profile-pic"/>
+        {{/each}}
         <a href="{{pathFor 'User_Profile_Page'}}">
           <span class="user-menu_username">{{user}}</span>
         </a>
