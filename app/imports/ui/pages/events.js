@@ -1,3 +1,5 @@
+import {Profile, ProfileSchema} from '../../api/profile/profile.js';
+
 let isPast = (date) => {
   let today = moment().format();
   return moment(today).isAfter(date);
@@ -119,21 +121,20 @@ Template.events.onRendered(() => {
       $('#events-calendar').fullCalendar('refetchEvents');
     });
   });
-  if(showTutorial) {
+  if(Profile.find({ firstLogin: true })) {
     new Confirmation({
       message: "Here you can add, edit and remove a session from your current calendar! To begin, please select a date.",
       title: "Calendar",
-      cancelText: "Quit Tutorial",
-      okText: "Next Page",
+      cancelText: "Disable Tutorial",
+      okText: "Okay, thanks",
       success: true, // whether the button should be green or red
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if (!ok) {
-        FlowRouter.go('events');
-        showTutorial = false;
+        FlowRouter.go('Edit_Profile', { _id: this._id });
         return;
       }
-      FlowRouter.go('Rankings_Page');
+      //FlowRouter.go('Rankings_Page');
     });
     return false;
   }

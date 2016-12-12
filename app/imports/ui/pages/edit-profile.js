@@ -29,6 +29,14 @@ Template.Edit_Profile.helpers({
     return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
   },
 });
+Template.Edit_Profile.events({
+  'click .cas-logout': function casLogout(event) {
+    event.preventDefault();
+    Meteor.logout();
+    FlowRouter.go('Public_Landing_Page');
+    return false;
+  },
+});
 
 // Template.Edit_Profile.onRendered(function enableSemantic() {
 //   const template = this;

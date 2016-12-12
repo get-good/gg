@@ -5,22 +5,20 @@ import { _ } from 'meteor/underscore';
 import { Profile, ProfileSchema } from '../../api/profile/profile.js';
 
 Template.Rankings_Page.onRendered(function tutorialRankings() {
-  if(showTutorial) {
+  if(Profile.find({ firstLogin: true })) {
     new Confirmation({
       message: "The rankings for all senseis are displayed here. Strive to be the top sensei!",
       title: "Rankings",
-      cancelText: "Quit Tutorial",
-      okText: "Got it!",
+      cancelText: "Disable Tutorial",
+      okText: "Okay, thanks",
       success: true, // whether the button should be green or red
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if (!ok) {
-        FlowRouter.go('Rankings_Page');
-        showTutorial = false;
+        FlowRouter.go('Edit_Profile', { _id: this._id });
         return;
       }
-      FlowRouter.go('Rankings_Page');
-      showTutorial = false;
+      //FlowRouter.go('Rankings_Page');
     });
     return false;
   }

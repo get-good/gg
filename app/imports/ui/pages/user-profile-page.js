@@ -23,7 +23,7 @@ Template.User_Profile_Page.events({
   },
   'click .edit'(event) {
     event.preventDefault();
-    FlowRouter.go('Edit_Profile');
+    FlowRouter.go('Edit_Profile', { _id: this._id });
   },
   'click .cas-logout': function casLogout(event) {
     event.preventDefault();
@@ -34,21 +34,20 @@ Template.User_Profile_Page.events({
 });
 
 Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
-  if(showTutorial) {
+  if(Profile.find({ firstLogin: true })) {
     new Confirmation({
       message: "This is your profile! Here you may edit the courses you have taken and for which you are willing to provide help for! You may also select which classes you are currently taking and for which you may need help!",
       title: "Profile",
-      cancelText: "Quit Tutorial",
-      okText: "Next Page",
+      cancelText: "Disable Tutorial",
+      okText: "Okay, thanks",
       success: true, // whether the button should be green or red
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if (!ok) {
-        FlowRouter.go('User_Profile_Page');
-        showTutorial = false;
+        FlowRouter.go('Edit_Profile', { _id: this._id });
         return;
       }
-      FlowRouter.go('events');
+      //FlowRouter.go('events');
     });
     return false;
   }
