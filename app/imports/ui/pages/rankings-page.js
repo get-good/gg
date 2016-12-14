@@ -34,6 +34,9 @@ Template.Rankings_Page.events({
 });
 
 Template.Rankings_Page.helpers({
+  user: function user() {
+    return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
+  },
   ProfileList() {
     var currentUser = Meteor.userId();
     return Profile.find({ createdBy: currentUser });

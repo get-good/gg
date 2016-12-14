@@ -138,8 +138,8 @@ body {
   font-weight: 900;
   padding: 0 1rem;
   color: #ffffff;
-  background: #3e313c;
-  border-bottom: 2px solid #372c36;
+  background: #674B36;
+  border-bottom: 2px solid #4C3A2F;
   float: left;
   cursor: pointer;
 }
@@ -168,7 +168,7 @@ body {
   width: 220px;
   float: left;
   color: #ab9ba9;
-  background-color: #4d394b;
+  background-color: #765C54;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -317,8 +317,8 @@ body {
   width: 220px;
   height: 100%;
   cursor: pointer;
-  background: #3e313c;
-  border-top: 2px solid #372c36;
+  background: #674B36;
+  border-top: 2px solid #4C3A2F;
   padding: 7px 0 9px 8px;
   height: 4rem;
   position: fixed;
