@@ -37,21 +37,19 @@ Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
 
   var currentUser = Meteor.userId();
   var pro = Profile.find({ createdBy: currentUser }).fetch()
-  var dis = true;
+  var first = true;
   _.each(pro, function (value, key) {
         _.each(value, function (val, k) {
           if (k == 'firstLogin') {
-            dis = val;
-            console.log(k, val)
+            first = val;
           }
         })
       }
   )
 
-  console.log(dis);
-  if (dis == true) {
+  if (first == true) {
     new Confirmation({
-      message: "This is your profile! Here you may edit the courses you have taken and for which you are willing to provide help for! You may also select which classes you are currently taking and for which you may need help!",
+      message: "This is your profile! Here you may edit the courses you have taken and for which you are willing to provide help for! You may also select which classes you are currently taking and for which you may need help! Disable this tutorial in the edit profile page.",
       title: "Profile",
       cancelText: "Disable Tutorial",
       okText: "Okay, thanks",
@@ -61,7 +59,6 @@ Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
       if (!ok) {
         return;
       }
-      //FlowRouter.go('events');
     });
     return false;
   }

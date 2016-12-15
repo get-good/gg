@@ -3,14 +3,25 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 import { _ } from 'meteor/underscore';
 import { Profile, ProfileSchema } from '../../api/profile/profile.js';
-import { Profile } from '../../api/profile/profile.js';
 import { Rating } from '../../api/ratings/ratings.js';
 
 let currentUser = Meteor.userId();
 Template.Rankings_Page.onRendered(function tutorialRankings() {
-  if(Profile.find({ createdBy: currentUser }).fetch().firstLogin) {
+  var currentUser = Meteor.userId();
+  var pro = Profile.find({ createdBy: currentUser }).fetch()
+  var first = true;
+  _.each(pro, function (value, key) {
+        _.each(value, function (val, k) {
+          if (k == 'firstLogin') {
+            first = val;
+          }
+        })
+      }
+  )
+
+  if(first == true) {
     new Confirmation({
-      message: "The rankings for all senseis are displayed here. Strive to be the top sensei!",
+      message: "The rankings for all senseis are displayed here. Strive to be the top sensei! Disable this tutorial in the edit profile page.",
       title: "Rankings",
       cancelText: "Disable Tutorial",
       okText: "Okay, thanks",
@@ -21,7 +32,6 @@ Template.Rankings_Page.onRendered(function tutorialRankings() {
         FlowRouter.go('User_Profile_Page', { _id: this._id });
         return;
       }
-      //FlowRouter.go('Rankings_Page');
     });
     return false;
   }

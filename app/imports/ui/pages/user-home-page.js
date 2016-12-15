@@ -21,8 +21,6 @@ Template.User_Home_Page.events({
 Template.User_Home_Page.helpers({
   ProfileList() {
     var currentUser = Meteor.userId();
-    //console.log(currentUser);
-    //console.log(Profile.find({ createdBy: currentUser }).fetch());
     if (Profile.find({ createdBy: currentUser }).fetch().length === 0) {
       Profile.insert({
         pic: 'http://i.imgur.com/LikUNLc.png',
@@ -38,26 +36,21 @@ Template.User_Home_Page.helpers({
   },
 })
 
-// Template.User_Home_Page.check = function(){
-//   setTimeout(function() {
-//     alert('This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links up top!');
-//   }, 10);
-// if(!this._rendered) {
-//   this._rendered = true;
-//   alert('This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links up top!');  }
-// };
-
 Template.User_Home_Page.onRendered(function tutorialUserHome() {
-  this.autorun(() => {
-    if (this.subscriptionsReady()) {
-      let currentUser = Meteor.userId();
-      //console.log(currentUser);Profile.find({ firstLogin: true }).fetch().firstLogin
-      let test = Profile.find({ createdBy: currentUser }).fetch();
-      console.log("test");
-      console.log(test);
-      if (Profile.find({ firstLogin: true }).fetch().firstLogin === true) {
+  var currentUser = Meteor.userId();
+  var pro = Profile.find({ createdBy: currentUser }).fetch()
+  var first = true;
+  _.each(pro, function (value, key) {
+        _.each(value, function (val, k) {
+          if (k == 'firstLogin') {
+            first = val;
+          }
+        })
+      }
+  )
+      if (first == true) {
         new Confirmation({
-          message: "This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links in the navbar!",
+          message: "This is your home page! From here, you can edit your profile, read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links in the navbar! Notifications will be displayed if you have something scheduled for today. Disable this tutorial in the edit profile page.",
           title: "Home",
           cancelText: "Disable Tutorial",
           okText: "Okay, thanks",
@@ -68,10 +61,7 @@ Template.User_Home_Page.onRendered(function tutorialUserHome() {
             FlowRouter.go('User_Profile_Page');
             return;
           }
-          //FlowRouter.go('User_Profile_Page');
         });
         return false;
       }
-    }
-  });
 });

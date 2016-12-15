@@ -137,3 +137,32 @@ Template.About.events({
     }
   },
 });
+Template.About.onRendered(function tutorialAbout() {
+  var currentUser = Meteor.userId();
+  var pro = Profile.find({ createdBy: currentUser }).fetch()
+  var first = true;
+  _.each(pro, function (value, key) {
+        _.each(value, function (val, k) {
+          if (k == 'firstLogin') {
+            first = val;
+          }
+        })
+      }
+  )
+  if (first == true) {
+    new Confirmation({
+      message: "This is a page that disiplays information about you. You can edit the information in the profile page. Disable this tutorial in the edit profile page.",
+      title: "About",
+      cancelText: "Disable Tutorial",
+      okText: "Okay, thanks",
+      success: true, // whether the button should be green or red
+      focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
+    }, function (ok) {
+      if (!ok) {
+        FlowRouter.go('User_Profile_Page');
+        return;
+      }
+    });
+    return false;
+  }
+});

@@ -79,3 +79,33 @@ Template.rating.events({
     }
   },
 });
+
+Template.rating.onRendered(function tutorialRatings() {
+  var currentUser = Meteor.userId();
+  var pro = Profile.find({ createdBy: currentUser }).fetch()
+  var first = true;
+  _.each(pro, function (value, key) {
+        _.each(value, function (val, k) {
+          if (k == 'firstLogin') {
+            first = val;
+          }
+        })
+      }
+  )
+  if (first == true) {
+    new Confirmation({
+      message: "Here you can rate a sensei that helped you! Please take the time to rate them on a scale of 1-5, 1 being the worst and 5 being the best. Let others know who to look for when they need help! Disable this tutorial in the edit profile page.",
+      title: "Ratings",
+      cancelText: "Disable Tutorial",
+      okText: "Okay, thanks",
+      success: true, // whether the button should be green or red
+      focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
+    }, function (ok) {
+      if (!ok) {
+        FlowRouter.go('User_Profile_Page');
+        return;
+      }
+    });
+    return false;
+  }
+});

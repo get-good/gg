@@ -121,10 +121,20 @@ Template.events.onRendered(() => {
       $('#events-calendar').fullCalendar('refetchEvents');
     });
   });
-  let currentUser = Meteor.userId();
-  if(Profile.find({ createdBy: currentUser }).fetch().firstLogin) {
+  var currentUser = Meteor.userId();
+  var pro = Profile.find({ createdBy: currentUser }).fetch()
+  var first = true;
+  _.each(pro, function (value, key) {
+        _.each(value, function (val, k) {
+          if (k == 'firstLogin') {
+            first = val;
+          }
+        })
+      }
+  )
+  if(first == true) {
     new Confirmation({
-      message: "Here you can add, edit and remove a session from your current calendar! To begin, please select a date.",
+      message: "Here you can add, edit and remove a session from your current calendar! To begin, please select a date. You can also drag events around in the calendar as long as they're in the future. In the day view, you can drag the time slot around also if it is in the future. Disable this tutorial in the edit profile page.",
       title: "Calendar",
       cancelText: "Disable Tutorial",
       okText: "Okay, thanks",
@@ -132,11 +142,9 @@ Template.events.onRendered(() => {
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if (!ok) {
-        //FlowRouter.go('Edit_Profile', { _id: this._id });
         FlowRouter.go('User_Profile_Page');
         return;
       }
-      //FlowRouter.go('Rankings_Page');
     });
     return false;
   }
