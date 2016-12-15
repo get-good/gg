@@ -88,7 +88,7 @@ FlowRouter.route('/add-sensei', {
   },
 });
 
-FlowRouter.route('/user-rating', {
+FlowRouter.route('/rating', {
   name: 'rating',
   action() {
     BlazeLayout.render('App_Body', { main: 'rating' });

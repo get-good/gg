@@ -1,27 +1,67 @@
 <template name="rating">
   {{#if currentUser}}
-  <div class="ui left aligned grid text container">
+    <div class="ui grid">
 
-    <div class="four wide column">
-      <img class="ui small circular image" src="http://i.imgur.com/LikUNLc.png"/>
-      <div class="ui segments">
-        <div class="ui button about">
-          <p class="item">About</p>
-        </div>
-        <div class="ui button rating">
-          <p class="item">Rating</p>
-        </div>
-        <div class="ui button edit">
-          <p class="item">Edit</p>
+      <div class="three wide column">
+        {{#each profile in ProfileList}}
+          <img class="ui small circular image" src="{{profile.pic}}"/>
+        {{/each}}
+        <div style="width:200px" class="ui vertical menu">
+          <a class="item" href="{{pathFor 'about'}}">
+            About
+          </a>
+          <a class="item" href="{{pathFor 'Rankings_Page'}}">
+            Rankings
+          </a>
+          <a class="item" href="{{pathFor 'User_Profile_Page'}}">
+            Profile
+          </a>
+          <a class="item cas-logout">
+            Logout
+          </a>
         </div>
       </div>
-    </div>
 
-    <div class="twelve wide column">
-      <h2>Strive for the Top!!</h2>
-      <p>Your weekly ranking may be viewed here.</p>
+      <div style="margin-left: 10px;" class="twelve wide column">
+        <div style="margin-top: 20px" class="ui container">
+          <form class="ui form contact-data-form {{ errorClass }}">
+            <h2>Give a Rating</h2>
+            <div class="field">
+              <label>Username</label>
+              <div class="one field">
+                <div class="field">
+                  <input type="text" name="username" id="username" placeholder="Enter username of Sensei"
+                         value="{{ contactField 'username' }}">
+                  {{#if displayFieldError 'username' }}
+                    <div class="ui error message">
+                      <p>You must specify a sensei's username.</p>
+                    </div>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label>Rating</label>
+              <div class="one field">
+                <div class="field">
+                  <input type="number" min="0" max="5" name="rating" id="rating" placeholder="Rating 1-5"
+                         value="{{ contactField 'rating' }}">
+                  {{#if displayFieldError 'about' }}
+                    <div class="ui error message">
+                      <p>You must specify the rating you are giving the sensei.</p>
+                    </div>
+                  {{/if}}
+                </div>
+              </div>
+            </div>
+
+            <button class="ui button" type="submit">Rate</button>
+
+          </form>
+        </div>
+      </div>
+
     </div>
-  </div>
   {{else}}
     <div class="ui container">
       <h2 class="ui centered header">Please log in to access this page.</h2>
