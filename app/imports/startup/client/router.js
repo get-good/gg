@@ -8,16 +8,6 @@ FlowRouter.route('/', {
   },
 });
 
-FlowRouter.route('/admin', {
-  name: 'Admin_Home_Page',
-  action() {
-    BlazeLayout.render('App_Body', { main: 'Admin_Home_Page' });
-    setTimeout(function () {
-      alert('As admin, you may edit all sessions or delete them if they\'re inappropriate. Also, you can edit and delete rankings when users graduate or switch majors.');
-    }, 400);
-  },
-});
-
 FlowRouter.route('/home', {
   name: 'User_Home_Page',
   action() {

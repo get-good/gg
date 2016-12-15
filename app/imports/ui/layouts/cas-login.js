@@ -60,8 +60,6 @@ Template.Cas_Login.events({
       console.log('ok');
       Meteor.call('delete', this._id);
       Meteor.loginWithCas(callback);
-      //FlowRouter.go('User_Home_Page');
-      //FlowRouter.go('Public_Landing_Page');
     });
     return false;
   },
