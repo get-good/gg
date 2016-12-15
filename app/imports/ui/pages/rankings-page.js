@@ -2,7 +2,9 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 import { _ } from 'meteor/underscore';
-import { Profile, ProfileSchema } from '../../api/profile/profile.js';
+import { Profile } from '../../api/profile/profile.js';
+import { Rating } from '../../api/ratings/ratings.js';
+
 
 Template.Rankings_Page.onRendered(function tutorialRankings() {
   if(Profile.find({ firstLogin: true })) {
@@ -36,6 +38,9 @@ Template.Rankings_Page.events({
 Template.Rankings_Page.helpers({
   user: function user() {
     return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
+  },
+  ratingsList() {
+    return Rating.find();
   },
   ProfileList() {
     var currentUser = Meteor.userId();
