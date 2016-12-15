@@ -3,7 +3,10 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 import { _ } from 'meteor/underscore';
 import { Profile, ProfileSchema } from '../../api/profile/profile.js';
-let currentUser = Meteor.user();
+import { Profile } from '../../api/profile/profile.js';
+import { Rating } from '../../api/ratings/ratings.js';
+
+let currentUser = Meteor.userId();
 Template.Rankings_Page.onRendered(function tutorialRankings() {
   if(Profile.find({ createdBy: currentUser }).fetch().firstLogin) {
     new Confirmation({
@@ -15,7 +18,7 @@ Template.Rankings_Page.onRendered(function tutorialRankings() {
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if (!ok) {
-        FlowRouter.go('Edit_Profile', { _id: this._id });
+        FlowRouter.go('User_Profile_Page', { _id: this._id });
         return;
       }
       //FlowRouter.go('Rankings_Page');
@@ -34,6 +37,12 @@ Template.Rankings_Page.events({
 });
 
 Template.Rankings_Page.helpers({
+  user: function user() {
+    return Meteor.user() ? Meteor.user().profile.name : 'No logged in user';
+  },
+  ratingsList() {
+    return Rating.find();
+  },
   ProfileList() {
     var currentUser = Meteor.userId();
     return Profile.find({ createdBy: currentUser });

@@ -10,8 +10,11 @@
           <a class="item" href="{{pathFor 'about'}}">
             About
           </a>
+          <a class="item" href="{{pathFor 'rating'}}">
+            Ratings
+          </a>
           <a class="item" href="{{pathFor 'Rankings_Page'}}">
-            Rating
+            Rankings
           </a>
           <a class="item" href="{{pathFor 'User_Profile_Page'}}">
             Profile
@@ -22,7 +25,7 @@
         </div>
       </div>
 
-      <div class="twelve wide column">
+      <div style="margin-left: 10px;" class="twelve wide column">
         <h1>About me</h1>
         {{#each profile in ProfileList}}
           <p>{{profile.about}}</p>
