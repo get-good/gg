@@ -21,7 +21,8 @@ Template.User_Home_Page.events({
 Template.User_Home_Page.helpers({
   ProfileList() {
     var currentUser = Meteor.userId();
-    console.log(Profile.find({ createdBy: currentUser }).fetch());
+    //console.log(currentUser);
+    //console.log(Profile.find({ createdBy: currentUser }).fetch());
     if (Profile.find({ createdBy: currentUser }).fetch().length === 0) {
       Profile.insert({
         pic: 'http://i.imgur.com/LikUNLc.png',
@@ -49,8 +50,12 @@ Template.User_Home_Page.helpers({
 Template.User_Home_Page.onRendered(function tutorialUserHome() {
   this.autorun(() => {
     if (this.subscriptionsReady()) {
-
-      if (Profile.find({ firstLogin: true })) {
+      let currentUser = Meteor.userId();
+      //console.log(currentUser);Profile.find({ firstLogin: true }).fetch().firstLogin
+      let test = Profile.find({ createdBy: currentUser }).fetch();
+      console.log("test");
+      console.log(test);
+      if (Profile.find({ firstLogin: true }).fetch().firstLogin === true) {
         new Confirmation({
           message: "This is your home page! From here, you can edit your profile,read your about page and even check your current helper rating. When you\'re ready to explore, feel free to click any of the links in the navbar!",
           title: "Home",
@@ -60,7 +65,7 @@ Template.User_Home_Page.onRendered(function tutorialUserHome() {
           focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
         }, function (ok) {
           if (!ok) {
-            FlowRouter.go('Edit_Profile', { _id: this._id });
+            FlowRouter.go('Edit_Profile', Profile.find({ createdBy: currentUser}).fetch()._id);
             return;
           }
           //FlowRouter.go('User_Profile_Page');

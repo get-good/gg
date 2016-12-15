@@ -121,7 +121,8 @@ Template.events.onRendered(() => {
       $('#events-calendar').fullCalendar('refetchEvents');
     });
   });
-  if(Profile.find({ firstLogin: true })) {
+  let currentUser = Meteor.userId();
+  if(Profile.find({ createdBy: currentUser }).fetch().firstLogin) {
     new Confirmation({
       message: "Here you can add, edit and remove a session from your current calendar! To begin, please select a date.",
       title: "Calendar",
@@ -131,7 +132,7 @@ Template.events.onRendered(() => {
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if (!ok) {
-        FlowRouter.go('Edit_Profile', { _id: this._id });
+        //FlowRouter.go('Edit_Profile', { _id: this._id });
         return;
       }
       //FlowRouter.go('Rankings_Page');

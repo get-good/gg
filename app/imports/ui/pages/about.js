@@ -90,8 +90,8 @@ Template.About.helpers({
   },
   ProfileList() {
     var currentUser = Meteor.userId();
-    console.log(Profile.find({ createdBy: currentUser }).fetch());
-    console.log(Profile.find().fetch());
+    //console.log(Profile.find({ createdBy: currentUser }).fetch());
+    //console.log(Profile.find().fetch());
     return Profile.find({ createdBy: currentUser });
   },
 });

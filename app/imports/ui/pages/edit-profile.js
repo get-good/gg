@@ -72,6 +72,7 @@ Template.Edit_Profile.events({
     if(popup == 'yes' || popup == 'Yes') {
       firstLogin = true;
     }
+    //else firstLogin = false;
 
     const updatedProfile = { pic, about, firstLogin, sensei, grass, createdBy, isAdmin };
     // Clear out any old validation errors.
@@ -100,3 +101,24 @@ Template.Edit_Profile.events({
 });
 
 const picture = Profile.find();
+
+Template.Edit_Profile.onRendered(function tutorialEditProfile() {
+  let currentUser = Meteor.userId();
+  if(Profile.find({ createdBy: currentUser }).fetch().firstLogin) {
+    new Confirmation({
+      message: "Here you can edit your profile. Edit your profile picture by providing a URL to it and edit other information by entering it the fields below. You can permanently disable the tutorial here too.",
+      title: "Profile",
+      cancelText: "Disable Tutorial",
+      okText: "Okay, thanks",
+      success: true, // whether the button should be green or red
+      focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
+    }, function (ok) {
+      if (!ok) {
+        FlowRouter.go('Edit_Profile', { _id: this._id });
+        return;
+      }
+      //FlowRouter.go('events');
+    });
+    return false;
+  }
+});

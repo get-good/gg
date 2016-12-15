@@ -34,7 +34,8 @@ Template.User_Profile_Page.events({
 });
 
 Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
-  if(Profile.find({ firstLogin: true })) {
+  let currentUser = Meteor.userId();
+  if(Profile.find({ createdBy: currentUser }).fetch().firstLogin) {
     new Confirmation({
       message: "This is your profile! Here you may edit the courses you have taken and for which you are willing to provide help for! You may also select which classes you are currently taking and for which you may need help!",
       title: "Profile",

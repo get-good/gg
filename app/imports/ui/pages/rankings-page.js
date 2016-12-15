@@ -3,9 +3,9 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Template } from 'meteor/templating';
 import { _ } from 'meteor/underscore';
 import { Profile, ProfileSchema } from '../../api/profile/profile.js';
-
+let currentUser = Meteor.user();
 Template.Rankings_Page.onRendered(function tutorialRankings() {
-  if(Profile.find({ firstLogin: true })) {
+  if(Profile.find({ createdBy: currentUser }).fetch().firstLogin) {
     new Confirmation({
       message: "The rankings for all senseis are displayed here. Strive to be the top sensei!",
       title: "Rankings",

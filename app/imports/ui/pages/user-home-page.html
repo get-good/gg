@@ -1,6 +1,7 @@
 <template name="User_Home_Page">
   {{#if currentUser}}
-    <div class="ui grid">
+    {{#if Template.subscriptionsReady}}
+      <div class="ui grid">
 
       <div class="three wide column">
         {{#each profile in ProfileList}}
@@ -26,6 +27,9 @@
         <h1>Welcome!</h1>
       </div>
     </div>
+      {{else}}
+        {{> loading}}
+      {{/if}}
 
   {{else}}
     <div class="ui container">
