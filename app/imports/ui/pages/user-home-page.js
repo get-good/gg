@@ -60,7 +60,7 @@ Template.User_Home_Page.onRendered(function tutorialUserHome() {
           focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
         }, function (ok) {
           if (!ok) {
-            FlowRouter.go('Edit_Profile', { _id: this._id });
+            FlowRouter.go('User_Profile_Page');
             return;
           }
           //FlowRouter.go('User_Profile_Page');

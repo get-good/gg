@@ -28,6 +28,12 @@ Template.Edit_Profile.helpers({
     const errorKeys = Template.instance().context.invalidKeys();
     return _.find(errorKeys, (keyObj) => keyObj.name === fieldName);
   },
+  ProfileList() {
+    var currentUser = Meteor.userId();
+    console.log(Profile.find({ createdBy: currentUser }).fetch());
+    console.log(Profile.find().fetch());
+    return Profile.find({ createdBy: currentUser });
+  },
 });
 Template.Edit_Profile.events({
   'click .cas-logout': function casLogout(event) {
@@ -67,11 +73,11 @@ Template.Edit_Profile.events({
     let isAdmin = false;
     let firstLogin = false;
 
-    console.log(popup);
-
-    if(popup == 'yes' || popup == 'Yes') {
+    if(popup == 'No' || popup == 'no') {
       firstLogin = true;
     }
+
+    console.log(firstLogin);
 
     const updatedProfile = { pic, about, firstLogin, sensei, grass, createdBy, isAdmin };
     // Clear out any old validation errors.

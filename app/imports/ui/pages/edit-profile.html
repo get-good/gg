@@ -3,7 +3,9 @@
     <div class="ui grid">
 
       <div class="three wide column">
-        <img class="ui small circular image" src="{{picture.pic}}"/>
+        {{#each profile in ProfileList}}
+          <img class="ui small circular image" src="{{profile.pic}}"/>
+        {{/each}}
         <div style="width:200px" class="ui vertical menu">
           <a class="item" href="{{pathFor 'About'}}">
             About
@@ -85,8 +87,15 @@
                 <label>Display Tutorial Popup</label>
                 <div class="one field">
                   <div class="field">
-                    <input type="text" name="popup" id="popup" placeholder="Yes or No"
-                           value="Yes">
+                    {{#each profile in ProfileList}}
+                      {{#if profile.firstLogin}}
+                        <input type="text" name="popup" id="popup" placeholder="Yes or No"
+                               value="Yes">
+                      {{else}}
+                        <input type="text" name="popup" id="popup" placeholder="Yes or No"
+                               value="No">
+                      {{/if}}
+                    {{/each}}
                     {{#if displayFieldError 'popup' }}
                       <div class="ui error message">
                         <p>You must specify your grasshopper classes.</p>
@@ -98,8 +107,8 @@
 
               <!--<label for="type">Classification</label>-->
               <!--<select name="type" class="form-control">-->
-                <!--<option selected="{{selected event.type 'Grasshopper' }}" value="Grasshopper">Grasshopper</option>-->
-                <!--<option selected="{{selected event.type 'Sensei' }}" value="Sensei">Sensei</option>-->
+              <!--<option selected="{{selected event.type 'Grasshopper' }}" value="Grasshopper">Grasshopper</option>-->
+              <!--<option selected="{{selected event.type 'Sensei' }}" value="Sensei">Sensei</option>-->
               <!--</select>-->
               <button class="ui button" type="submit">Update</button>
 

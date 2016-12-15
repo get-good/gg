@@ -15,7 +15,7 @@ Template.Rankings_Page.onRendered(function tutorialRankings() {
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if (!ok) {
-        FlowRouter.go('Edit_Profile', { _id: this._id });
+        FlowRouter.go('User_Profile_Page', { _id: this._id });
         return;
       }
       //FlowRouter.go('Rankings_Page');

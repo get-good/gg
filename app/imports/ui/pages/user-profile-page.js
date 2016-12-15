@@ -1,8 +1,8 @@
-import { ReactiveDict } from 'meteor/reactive-dict';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { Template } from 'meteor/templating';
-import { _ } from 'meteor/underscore';
-import { Profile, ProfileSchema } from '../../api/profile/profile.js';
+import {ReactiveDict} from 'meteor/reactive-dict';
+import {FlowRouter} from 'meteor/kadira:flow-router';
+import {Template} from 'meteor/templating';
+import {_} from 'meteor/underscore';
+import {Profile, ProfileSchema} from '../../api/profile/profile.js';
 
 Template.User_Profile_Page.events({
   'click .about'(event) {
@@ -34,7 +34,21 @@ Template.User_Profile_Page.events({
 });
 
 Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
-  if(Profile.find({ firstLogin: true })) {
+  var currentUser = Meteor.userId();
+  var pro = Profile.find({ createdBy: currentUser }).fetch()
+  var dis = true;
+  _.each(pro, function (value, key) {
+        _.each(value, function (val, k) {
+          if (k == 'firstLogin') {
+            dis = val;
+            console.log(k, val)
+          }
+        })
+      }
+  )
+
+  console.log(dis);
+  if (dis == true) {
     new Confirmation({
       message: "This is your profile! Here you may edit the courses you have taken and for which you are willing to provide help for! You may also select which classes you are currently taking and for which you may need help!",
       title: "Profile",
@@ -44,7 +58,6 @@ Template.User_Profile_Page.onRendered(function tutorialUserProfile() {
       focus: "ok" // which button to autofocus, "cancel" (default) or "ok", or "none"
     }, function (ok) {
       if (!ok) {
-        FlowRouter.go('Edit_Profile', { _id: this._id });
         return;
       }
       //FlowRouter.go('events');
